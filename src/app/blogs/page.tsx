@@ -16,6 +16,16 @@ interface BlogSummary {
 
 const blogs: BlogSummary[] = [
   {
+    id: 3,
+    title: "The Future is Decentralized: Understanding Blockchain's Core Principles",
+    excerpt:
+      'Mapped out the foundational ideas behind decentralized networks, consensus, and why transparent ledgers are reshaping trust online.',
+    date: '2024-10-21',
+    href: 'https://www.linkedin.com/pulse/future-decentralized-understanding-blockchains-core-patary-noo8c/?trackingId=5HxAiYJSRrCoNs9jFyKgMQ%3D%3D',
+    imageSrc: '/images/blogs/blockchain-future.jpg',
+    imageAlt: '3D rendering of blockchain data cubes linked together with binary code.',
+  },
+  {
     id: 1,
     title: 'Sovereign Cloud and Edge Computing: The New Frontier of Data Independence',
     excerpt:
@@ -48,8 +58,8 @@ export default function BlogsPage() {
       <Header />
       <main className="neon-fade min-h-screen bg-black text-white pt-36 pb-20 px-6">
         <header className="max-w-5xl mx-auto mb-14">
-          <h1 className="text-5xl font-extrabold tracking-tight">Blogs</h1>
-          <p className="mt-4 max-w-2xl text-zinc-300">Thoughts, breakdowns and UX exploration logs.</p>
+          <h1 className="text-5xl font-extrabold tracking-tight">Some Silly Blogs I Wrote</h1>
+          <p className="mt-4 max-w-2xl text-zinc-300">A tiny shelf for my experiments, rambles, and technology breakdowns.</p>
         </header>
         <div className="max-w-5xl mx-auto flex flex-col gap-10">
           {blogs.map((b, index) => (
