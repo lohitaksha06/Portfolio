@@ -16,6 +16,67 @@ interface BlogSummary {
 
 const blogs: BlogSummary[] = [
   {
+    id: 4,
+    title:
+      'Studio Ghibli and the AI Controversy: A Broader Warning About Creativity, Ethics, and Plagiarism in the Age of Generative AI',
+    excerpt:
+      'Reflected on the Ghibli backlash to examine where generative AI crosses ethical lines, and how creators can safeguard originality without halting innovation.',
+    date: '2024-11-05',
+    href: 'https://www.linkedin.com/pulse/studio-ghibli-ai-controversy-broader-warning-ethics-age-patary-xd2xc/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/studio-ghibli-ai.jpg',
+    imageAlt: 'Stylized illustration of a girl facing an AI circuit silhouette referencing Studio Ghibli controversy.',
+  },
+  {
+    id: 5,
+    title: 'From Smart Contracts to Smart Economies: Blockchain’s Role in Building Autonomous Systems',
+    excerpt:
+      'Outlined how composable smart contracts can automate governance and value exchange, paving the way for self-running digital economies.',
+    date: '2024-08-16',
+    href: 'https://www.linkedin.com/pulse/from-smart-contracts-economies-blockchains-role-building-patary-rjlyc/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/blockchain-economies.jpg',
+    imageAlt: 'Illustration showing blockchain network nodes enabling smart contract interactions.',
+  },
+  {
+    id: 6,
+    title: 'Smart Clouds, Smarter Code: What Developers Need to Know About AI-Powered Platforms',
+    excerpt:
+      'Shared practical takeaways for dev teams adopting AI-assisted cloud services, from guardrails and observability to balancing automation with human oversight.',
+    date: '2024-06-09',
+    href: 'https://www.linkedin.com/pulse/smart-clouds-smarter-code-what-developers-need-know-platforms-patary-lgidc/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/smart-clouds.jpg',
+    imageAlt: 'Futuristic glowing cloud icon hovering above circuit-like infrastructure.',
+  },
+  {
+    id: 7,
+    title: 'Project Update: Building PharmaChain – A Blockchain-Based Medicine Supply Chain Tracker',
+    excerpt:
+      'Documented the latest sprint where PharmaChain gained lot tracking, cold-chain anomaly alerts, and a patient-facing verification portal.',
+    date: '2024-05-22',
+    href: 'https://www.linkedin.com/pulse/project-update-building-pharmachain-blockchain-based-medicine-patary-u8z8c/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/pharmachain-update.jpg',
+    imageAlt: 'Illustration of blockchain cubes connected with healthcare icons representing PharmaChain.',
+  },
+  {
+    id: 8,
+    title: 'Tackling Blockchain Bloat: Can AI Help Prune Without Compromising Trust?',
+    excerpt:
+      'Explored AI-assisted pruning strategies that lighten ledger storage while preserving verifiability through zero-knowledge proofs and shard snapshots.',
+    date: '2024-04-14',
+    href: 'https://www.linkedin.com/pulse/tackling-blockchain-bloat-can-ai-help-prune-without-trust-patary-eskvc/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/blockchain-pruning.jpg',
+    imageAlt: 'Graphic showing AI-assisted blockchain pruning with neon scissors and circuitry.',
+  },
+  {
+    id: 9,
+    title: 'Meta’s Use of Synthetic Data: Revolutionizing AI in the Metaverse',
+    excerpt:
+      'Looked at how Meta trains immersive AI experiences with synthetic datasets, and why governance controls matter as virtual worlds mix real and generated content.',
+    date: '2024-03-30',
+    href: 'https://www.linkedin.com/pulse/metas-use-synthetic-data-revolutionizing-ai-metaverse-patary-kquyc/?trackingId=R5IcI5EnQ6Ky5FHdYogxrg%3D%3D',
+    imageSrc: '/images/blogs/meta-synthetic-data.jpg',
+    imageAlt: 'Meta logo glowing against a futuristic gradient background representing synthetic data.',
+  },
+  {
     id: 3,
     title: "The Future is Decentralized: Understanding Blockchain's Core Principles",
     excerpt:
@@ -102,6 +163,22 @@ export default function BlogsPage() {
               </article>
             </motion.a>
           ))}
+        </div>
+        <div className="mx-auto mt-20 flex max-w-5xl flex-col items-center gap-4 text-center">
+          <p className="text-lg font-semibold tracking-wide text-sky-100">
+            Love reading my blogs? Check out more on my LinkedIn!
+          </p>
+          <a
+            href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full border border-sky-500/60 bg-sky-500/10 px-6 py-3 text-base font-medium text-sky-200 shadow-[0_0_30px_rgba(56,189,248,0.35)] transition-all duration-300 hover:translate-y-[-2px] hover:border-sky-400 hover:text-white hover:shadow-[0_0_45px_rgba(56,189,248,0.55)]"
+          >
+            Explore LinkedIn
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-sky-500/80 text-black shadow-[0_0_18px_rgba(59,130,246,0.8)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-400">
+              →
+            </span>
+          </a>
         </div>
       </main>
     </>

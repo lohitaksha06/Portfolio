@@ -2,6 +2,7 @@
 
 import Header from '@/components/layout/Header'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 interface Certificate {
   id: number
@@ -9,32 +10,33 @@ interface Certificate {
   issuer: string
   issuedOn: string
   description: string
-  credentialUrl?: string
+  credentialUrl: string
+  imageSrc: string
+  imageAlt: string
 }
 
 const certificates: Certificate[] = [
   {
     id: 1,
-    title: 'Azure Fundamentals',
-    issuer: 'Microsoft',
-    issuedOn: '2024-05-18',
-    description: 'Validated core knowledge of Azure workloads, governance, and deployment models.',
-    credentialUrl: 'https://learn.microsoft.com/cert/azure-fundamentals',
+    title: 'Analyze Data to Answer Questions',
+    issuer: 'Google / Coursera',
+    issuedOn: '2025-11-21',
+    description:
+      'Completed the Google Data Analytics specialization module focused on framing questions, preparing datasets, and building insights for stakeholders.',
+    credentialUrl: 'https://coursera.org/share/3a9f0a87bd92c7414e02932e04b83d94',
+    imageSrc: '/images/certificates/google-data-analytics.jpg',
+    imageAlt: 'Google Coursera certificate for Analyze Data to Answer Questions.',
   },
   {
     id: 2,
-    title: 'AWS Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    issuedOn: '2023-12-02',
-    description: 'Demonstrated foundational understanding of AWS global infrastructure and billing.',
-    credentialUrl: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
-  },
-  {
-    id: 3,
-    title: 'Certified Blockchain Associate',
-    issuer: 'Blockchain Council',
-    issuedOn: '2023-08-27',
-    description: 'Covered distributed ledger concepts, smart contract evaluation, and supply chain traceability.',
+    title: 'Build Dynamic User Interfaces (UI) for Websites',
+    issuer: 'Google / Coursera',
+    issuedOn: '2023-10-05',
+    description:
+      'Completed the Coursera project-based course on crafting responsive, interactive UI patterns using modern web development tooling.',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/463CXIM5LMIE',
+    imageSrc: '/images/certificates/google-ui-for-websites.jpg',
+    imageAlt: 'Google Coursera certificate for Build Dynamic User Interfaces (UI) for Websites.',
   },
 ]
 
@@ -58,13 +60,25 @@ export default function CertificatesPage() {
           {certificates.map((cert, index) => (
             <motion.article
               key={cert.id}
-              className="glitch-card flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between"
+              className="glitch-card flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.4, margin: '0px 0px -120px 0px' }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.05 }}
             >
+              <div className="relative w-full overflow-hidden rounded-lg border border-sky-900/40 bg-black/30 shadow-[0_0_25px_rgba(56,189,248,0.15)] md:w-[42%]">
+                <Image
+                  src={cert.imageSrc}
+                  alt={cert.imageAlt}
+                  width={960}
+                  height={720}
+                  className="h-full w-full object-cover"
+                  priority
+                  unoptimized
+                />
+              </div>
+
               <div className="flex-1">
                 <h2 className="text-2xl font-semibold text-sky-200">{cert.title}</h2>
                 <p className="mt-1 text-sm uppercase tracking-[0.35em] text-zinc-500">{cert.issuer}</p>
