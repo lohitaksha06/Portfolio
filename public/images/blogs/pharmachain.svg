@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#5cc5ff" />
+      <stop offset="100%" stop-color="#27a5ff" />
+    </linearGradient>
+    <linearGradient id="pill" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dfe9f5" />
+    </linearGradient>
+    <linearGradient id="cap" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#256bff" />
+      <stop offset="100%" stop-color="#0f4ad8" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)" />
+  <g fill="none" stroke="#f3fbff" stroke-width="6" opacity="0.55" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M220 470h260l44-32 60 32h384" />
+    <path d="M308 400h240l50-36 72 36h320" />
+    <path d="M650 520h340l58-44 54 44h128" />
+    <circle cx="368" cy="470" r="10" />
+    <circle cx="902" cy="520" r="10" />
+    <circle cx="1110" cy="520" r="10" />
+    <circle cx="844" cy="520" r="10" />
+  </g>
+  <g transform="rotate(-23 640 360)">
+    <g transform="translate(490 180)">
+      <rect x="0" y="0" width="210" height="80" rx="40" fill="url(#pill)" />
+      <rect x="0" y="0" width="100" height="80" rx="40" fill="url(#cap)" />
+    </g>
+    <g transform="translate(700 320)">
+      <rect x="0" y="0" width="210" height="80" rx="40" fill="url(#pill)" />
+      <rect x="0" y="0" width="100" height="80" rx="40" fill="url(#cap)" />
+    </g>
+    <g transform="translate(320 320)">
+      <rect x="0" y="0" width="210" height="80" rx="40" fill="url(#pill)" />
+      <rect x="0" y="0" width="100" height="80" rx="40" fill="url(#cap)" />
+    </g>
+    <g transform="translate(610 220)">
+      <rect x="0" y="0" width="210" height="80" rx="40" fill="url(#pill)" />
+      <rect x="0" y="0" width="100" height="80" rx="40" fill="url(#cap)" />
+    </g>
+    <g transform="translate(420 420)">
+      <rect x="0" y="0" width="210" height="80" rx="40" fill="url(#pill)" />
+      <rect x="0" y="0" width="100" height="80" rx="40" fill="url(#cap)" />
+    </g>
+  </g>
+</svg>

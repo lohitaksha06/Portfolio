@@ -1,10 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Header from '@/components/layout/Header'
 
 export default function Home() {
   const [showScrollText, setShowScrollText] = useState(false)
-  const [showHeader, setShowHeader] = useState(false)
+  const [showBlogsCTA, setShowBlogsCTA] = useState(false)
+  const blogsRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     // Show scroll text after a delay
@@ -12,41 +14,31 @@ export default function Home() {
       setShowScrollText(true)
     }, 2000)
 
-    // Handle scroll for header visibility
-    const handleScroll = () => {
-      setShowHeader(window.scrollY > 100)
-    }
+    // Observe blogs section
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setShowBlogsCTA(true)
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+    if (blogsRef.current) observer.observe(blogsRef.current)
 
-    window.addEventListener('scroll', handleScroll)
     return () => {
       clearTimeout(scrollTextTimer)
-      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
     }
   }, [])
 
   return (
     <>
-      {/* Floating Header */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          showHeader 
-            ? 'opacity-100 translate-y-0 bg-black/80 backdrop-blur-md' 
-            : 'opacity-0 -translate-y-full'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-white font-bold text-lg">Lohit's Portfolio</div>
-          <nav className="flex space-x-8">
-            <a href="#home" className="text-white hover:text-gray-300 transition-colors">Home</a>
-            <a href="#blogs" className="text-white hover:text-gray-300 transition-colors">Blogs</a>
-            <a href="#projects" className="text-white hover:text-gray-300 transition-colors">Projects</a>
-            <a href="#about" className="text-white hover:text-gray-300 transition-colors">About Me</a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
-      <main id="home" className="min-h-screen grid place-items-center bg-black text-white relative">
+      <main id="home" className="relative grid min-h-screen place-items-center bg-black pt-32 text-white">
         <div className="text-center px-4">
           <h1
             className="glitch text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight relative"
@@ -68,26 +60,33 @@ export default function Home() {
         </div>
         
         {/* subtle scanline overlay */}
-        <div className="pointer-events-none fixed inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[length:100%_3px]" />
+        <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[length:100%_3px] opacity-[0.04]" />
       </main>
 
       {/* Content Sections */}
-      <section id="blogs" className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        <div className="text-center px-4">
+      <section ref={blogsRef} id="blogs" className="relative flex min-h-screen items-center justify-center bg-gray-900 text-white">
+        <div className="px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Blogs</h2>
-          <p className="text-gray-300 text-lg">Coming soon...</p>
+          <p className="text-gray-300 text-lg mb-10">Click the arrow to explore my posts.</p>
+          <a
+            href="/blogs"
+            className={`inline-flex flex-col items-center gap-3 transition-opacity duration-700 ${showBlogsCTA ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <span className="text-sm tracking-wider uppercase text-white/80">click on this arrow to explore</span>
+            <span className="animate-bounce text-3xl">↓</span>
+          </a>
         </div>
       </section>
 
-      <section id="projects" className="min-h-screen bg-gray-800 text-white flex items-center justify-center">
-        <div className="text-center px-4">
+      <section id="projects" className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
+        <div className="px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Projects</h2>
           <p className="text-gray-300 text-lg">My awesome projects will be showcased here...</p>
         </div>
       </section>
 
-      <section id="about" className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        <div className="text-center px-4">
+      <section id="about" className="flex min-h-screen items-center justify-center bg-gray-900 text-white">
+        <div className="px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">About Me</h2>
           <p className="text-gray-300 text-lg max-w-2xl">
             I'm Lohitaksha, passionate about creating amazing digital experiences...

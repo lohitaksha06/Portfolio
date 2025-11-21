@@ -71,3 +71,117 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Neon fade backdrop for sections needing futuristic glow */
+.neon-fade {
+  position: relative;
+  isolation: isolate;
+}
+
+.neon-fade::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(64, 224, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(33, 150, 243, 0.3), transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(255, 70, 110, 0.22), transparent 65%);
+  filter: blur(90px);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.neon-fade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.9) 0%, rgba(0, 0, 0, 0.92) 50%, rgba(2, 6, 23, 0.95) 100%);
+  z-index: -2;
+}
+
+/* Glitch card hover effect with red/blue channel split */
+.glitch-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  background: linear-gradient(145deg, rgba(2, 6, 23, 0.92), rgba(5, 12, 34, 0.88));
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.glitch-card::before,
+.glitch-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.glitch-card::before {
+  background: linear-gradient(120deg, rgba(255, 80, 100, 0.6), transparent 65%);
+}
+
+.glitch-card::after {
+  background: linear-gradient(300deg, rgba(64, 180, 255, 0.55), transparent 70%);
+}
+
+.glitch-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 0 35px rgba(64, 180, 255, 0.35);
+  border-color: rgba(118, 202, 255, 0.6);
+}
+
+.glitch-card:hover::before {
+  opacity: 1;
+  animation: glitch-shift 0.65s steps(2, end) infinite;
+}
+
+.glitch-card:hover::after {
+  opacity: 1;
+  animation: glitch-shift-alt 0.65s steps(2, end) infinite;
+}
+
+@keyframes glitch-shift {
+  0% {
+    transform: translate3d(-2px, -2px, 0);
+  }
+  20% {
+    transform: translate3d(2px, 2px, 0);
+  }
+  40% {
+    transform: translate3d(-1px, 2px, 0);
+  }
+  60% {
+    transform: translate3d(2px, -1px, 0);
+  }
+  80% {
+    transform: translate3d(-2px, 1px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes glitch-shift-alt {
+  0% {
+    transform: translate3d(2px, 1px, 0);
+  }
+  20% {
+    transform: translate3d(-2px, -1px, 0);
+  }
+  40% {
+    transform: translate3d(1px, -3px, 0);
+  }
+  60% {
+    transform: translate3d(-3px, 2px, 0);
+  }
+  80% {
+    transform: translate3d(2px, -2px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
