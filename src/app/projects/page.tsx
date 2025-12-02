@@ -24,6 +24,25 @@ export default function Projects() {
       ]
     },
     {
+      id: 6,
+      title: "Monza Motors",
+      category: "Automotive Experience",
+      description:
+        "Monza Motors unifies vehicle data, maintenance history, and ownership documents within a motorsport-inspired dashboard so drivers, dealers, and service teams share a single, transparent view of every car.",
+      image: "/api/placeholder/800/600",
+      tags: ["Automotive", "Dashboard", "Data", "Notifications"],
+      link: "https://monza-motors.netlify.app/",
+      challenge:
+        "Car owners and service partners lacked a streamlined way to access maintenance logs, documentation, and performance insights without juggling paperwork or disconnected tools.",
+      solution:
+        "Architected a centralized vehicle hub with editable service logs, dealer integrations, and a document vault layered within a sleek UI that echoes motorsport precision.",
+      results: [
+        "Vehicle dashboard surfaces model specs, service history, and performance cues",
+        "Maintenance tracker and smart reminders reduce missed services and renewals",
+        "Digital documentation vault keeps ownership records transparent and accessible"
+      ]
+    },
+    {
       id: 1,
       title: "E-Commerce Redesign",
       category: "UX Research & Design",
