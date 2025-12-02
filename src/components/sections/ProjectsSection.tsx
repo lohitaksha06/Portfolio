@@ -11,35 +11,39 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Redesign",
-      description: "Complete UX overhaul of a major e-commerce platform resulting in 40% increase in conversions",
+      title: "Meetriders – Smart College Carpool",
+      description: "Spring Boot + SQL ride-matching system that helped my college day scholars avoid evening bus queues by pairing commuters in real time.",
       image: "/api/placeholder/600/400",
-      tags: ["UX Research", "UI Design", "A/B Testing"],
-      color: "from-blue-500 to-purple-600"
+      tags: ["Spring Boot", "SQL", "Ride Matching"],
+      color: "from-indigo-500 to-purple-600",
+      link: "https://meet-riders.vercel.app/"
     },
     {
       id: 2,
-      title: "Mobile Banking App",
-      description: "Designed an intuitive banking experience with focus on accessibility and security",
+      title: "Digital Porch",
+      description: "Community-first web app that recreates neighborhood porch conversations with real-time posts and role-based moderation.",
       image: "/api/placeholder/600/400",
-      tags: ["Mobile Design", "Accessibility", "Fintech"],
-      color: "from-green-500 to-teal-600"
+      tags: ["Community", "Realtime", "UI"],
+      color: "from-green-500 to-teal-600",
+      link: "https://digital-porch.vercel.app/"
     },
     {
       id: 3,
-      title: "Healthcare Dashboard",
-      description: "Complex data visualization for healthcare professionals with real-time insights",
+      title: "Monza Motors",
+      description: "Motorsport-inspired dashboard centralizing vehicle specs, maintenance logs, and ownership documents for transparent car management.",
       image: "/api/placeholder/600/400",
-      tags: ["Data Viz", "Healthcare", "Dashboard"],
-      color: "from-red-500 to-pink-600"
+      tags: ["Automotive", "Dashboard", "Notifications"],
+      color: "from-red-500 to-pink-600",
+      link: "https://monza-motors.netlify.app/"
     },
     {
       id: 4,
-      title: "AI-Powered SaaS",
-      description: "User-friendly interface for a complex AI tool, making machine learning accessible",
+      title: "E-Commerce Redesign",
+      description: "UX and conversion optimization overhaul that lifted checkout conversions by 40% and cut cart abandonment by 25%.",
       image: "/api/placeholder/600/400",
-      tags: ["AI/ML", "SaaS", "Complex UI"],
-      color: "from-yellow-500 to-orange-600"
+      tags: ["UX Research", "UI Design", "A/B Testing"],
+      color: "from-yellow-500 to-orange-600",
+      link: "/projects"
     }
   ]
 
@@ -99,13 +103,16 @@ const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <motion.button
+                <motion.a
+                  href={project.link}
+                  target={project.link.startsWith('http') ? '_blank' : '_self'}
+                  rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-full bg-gradient-to-r ${project.color} text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg`}
+                  className={`block text-center bg-gradient-to-r ${project.color} text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg`}
                 >
-                  View Case Study
-                </motion.button>
+                  View Project
+                </motion.a>
               </div>
 
               {/* Hover overlay */}

@@ -5,7 +5,26 @@ import { motion } from 'framer-motion'
 export default function Projects() {
   const projects = [
     {
-      id: 5,
+      id: 1,
+      title: "Meetriders – Smart College Carpool",
+      category: "Spring Boot + SQL",
+      description:
+        "Meetriders is an intelligent ride-matching platform for campus commuters, built with Spring Boot services and SQL data models to pair students and faculty by route, timing, and availability.",
+      image: "/api/placeholder/800/600",
+      tags: ["Spring Boot", "SQL", "Ride Matching", "Backend"],
+      link: "https://meet-riders.vercel.app/",
+      challenge:
+        "Day scholars at my college were stuck waiting for evening buses with no reliable way to coordinate shared rides despite overlapping home routes and schedules.",
+      solution:
+        "Engineered REST APIs that capture university metadata, geolocated routes, and real-time availability pings, then run SQL matching queries with time-window and direction filters to surface ideal carpool partners instantly.",
+      results: [
+        "Prototype reduced post-class wait times by letting day scholars find ride partners as soon as they were free",
+        "Automated matches respect ±15 minute windows, shared departments, and nearest pickup points to keep carpools relevant",
+        "Backend-first architecture now powers a live dashboard at meet-riders.vercel.app for continued feedback"
+      ]
+    },
+    {
+      id: 2,
       title: "Digital Porch",
       category: "Community Platform",
       description:
@@ -24,7 +43,7 @@ export default function Projects() {
       ]
     },
     {
-      id: 6,
+      id: 3,
       title: "Monza Motors",
       category: "Automotive Experience",
       description:
@@ -43,7 +62,7 @@ export default function Projects() {
       ]
     },
     {
-      id: 1,
+      id: 4,
       title: "E-Commerce Redesign",
       category: "UX Research & Design",
       description: "Complete redesign of a major e-commerce platform focusing on conversion optimization and user experience improvements. The project resulted in a 40% increase in conversions and 25% reduction in cart abandonment.",
@@ -55,7 +74,7 @@ export default function Projects() {
       results: ["40% increase in conversions", "25% reduction in cart abandonment", "35% improvement in mobile engagement"]
     },
     {
-      id: 2,
+      id: 5,
       title: "Mobile Banking App",
       category: "Mobile UX Design",
       description: "Designed an intuitive mobile banking experience with a focus on accessibility, security, and ease of use. The app serves over 100k users and maintains a 4.8-star rating.",
@@ -67,7 +86,7 @@ export default function Projects() {
       results: ["4.8-star app store rating", "30% increase in mobile transactions", "WCAG AA compliance achieved"]
     },
     {
-      id: 3,
+      id: 6,
       title: "Healthcare Dashboard",
       category: "Data Visualization",
       description: "Complex data visualization dashboard for healthcare professionals to monitor patient data, trends, and alerts in real-time. The system processes over 1M data points daily.",
@@ -79,7 +98,7 @@ export default function Projects() {
       results: ["50% reduction in data analysis time", "99.9% system uptime", "25% improvement in patient outcomes"]
     },
     {
-      id: 4,
+      id: 7,
       title: "AI-Powered SaaS Platform",
       category: "Complex UI Design",
       description: "User-friendly interface for a complex AI tool that makes machine learning accessible to non-technical users. The platform democratizes AI for small businesses.",
