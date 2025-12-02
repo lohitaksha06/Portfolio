@@ -5,6 +5,25 @@ import { motion } from 'framer-motion'
 export default function Projects() {
   const projects = [
     {
+      id: 5,
+      title: "Digital Porch",
+      category: "Community Platform",
+      description:
+        "Digital Porch recreates the warmth of a neighborhood porch online, giving communities a shared space to post updates, coordinate events, and stay connected through an approachable, minimal interface.",
+      image: "/api/placeholder/800/600",
+      tags: ["Community", "Real-time", "Responsive UI", "Accessibility"],
+      link: "https://digital-porch.vercel.app/",
+      challenge:
+        "Local groups needed an inclusive digital hub that felt as welcoming as in-person porch conversations while remaining lightweight for varying connection speeds.",
+      solution:
+        "Designed a clean feed with role-based moderation, instant notifications, and responsive layouts so neighbors of every age can share announcements and resources with ease.",
+      results: [
+        "Community feed for announcements, resources, and questions",
+        "Real-time alerts keep conversations active and timely",
+        "Optimized for low-bandwidth access while retaining a friendly UI"
+      ]
+    },
+    {
       id: 1,
       title: "E-Commerce Redesign",
       category: "UX Research & Design",
