@@ -20,6 +20,15 @@ const ProjectsSection = () => {
     },
     {
       id: 2,
+      title: "IntelliQuery – Natural Language SQL",
+      description: "Java backend with an LLM pipeline that turns plain-English questions into SQL and explains the answers for non-technical stakeholders.",
+      image: "/api/placeholder/600/400",
+      tags: ["Java", "LLM", "SQL"],
+      color: "from-blue-500 to-indigo-600",
+      link: "/projects"
+    },
+    {
+      id: 3,
       title: "Digital Porch",
       description: "Community-first web app that recreates neighborhood porch conversations with real-time posts and role-based moderation.",
       image: "/api/placeholder/600/400",
@@ -28,7 +37,7 @@ const ProjectsSection = () => {
       link: "https://digital-porch.vercel.app/"
     },
     {
-      id: 3,
+      id: 4,
       title: "Monza Motors",
       description: "Motorsport-inspired dashboard centralizing vehicle specs, maintenance logs, and ownership documents for transparent car management.",
       image: "/api/placeholder/600/400",
@@ -37,7 +46,7 @@ const ProjectsSection = () => {
       link: "https://monza-motors.netlify.app/"
     },
     {
-      id: 4,
+      id: 5,
       title: "E-Commerce Redesign",
       description: "UX and conversion optimization overhaul that lifted checkout conversions by 40% and cut cart abandonment by 25%.",
       image: "/api/placeholder/600/400",

@@ -25,6 +25,25 @@ export default function Projects() {
     },
     {
       id: 2,
+      title: "IntelliQuery – Natural Language SQL Engine",
+      category: "Java + LLM Backend",
+      description:
+        "IntelliQuery transforms natural language prompts into optimized SQL for MariaDB and returns annotated explanations so non-technical teams can interrogate enterprise data without writing queries.",
+      image: "/api/placeholder/800/600",
+      tags: ["Java", "LLM", "SQL", "NLP"],
+      link: "#",
+      challenge:
+        "Operations staff, HR, and academic admins needed instant answers from relational datasets but were blocked by the SQL skills gap and ad-hoc developer requests.",
+      solution:
+        "Built a Spring-powered pipeline that interprets natural language intents, assembles parameterized SQL via a hosted LLM, executes against MariaDB using JDBC, and narrates the resulting data back in plain English.",
+      results: [
+        "LLM-driven translator converts user questions into efficient SQL with guardrails",
+        "Result explainer summarizes rows and metrics so stakeholders understand outcomes without dashboards",
+        "Conversational architecture unlocks secure, self-service analytics for enterprise datasets"
+      ]
+    },
+    {
+      id: 3,
       title: "Digital Porch",
       category: "Community Platform",
       description:
@@ -43,7 +62,7 @@ export default function Projects() {
       ]
     },
     {
-      id: 3,
+      id: 4,
       title: "Monza Motors",
       category: "Automotive Experience",
       description:
@@ -62,7 +81,7 @@ export default function Projects() {
       ]
     },
     {
-      id: 4,
+      id: 5,
       title: "E-Commerce Redesign",
       category: "UX Research & Design",
       description: "Complete redesign of a major e-commerce platform focusing on conversion optimization and user experience improvements. The project resulted in a 40% increase in conversions and 25% reduction in cart abandonment.",
@@ -74,7 +93,7 @@ export default function Projects() {
       results: ["40% increase in conversions", "25% reduction in cart abandonment", "35% improvement in mobile engagement"]
     },
     {
-      id: 5,
+      id: 6,
       title: "Mobile Banking App",
       category: "Mobile UX Design",
       description: "Designed an intuitive mobile banking experience with a focus on accessibility, security, and ease of use. The app serves over 100k users and maintains a 4.8-star rating.",
@@ -86,7 +105,7 @@ export default function Projects() {
       results: ["4.8-star app store rating", "30% increase in mobile transactions", "WCAG AA compliance achieved"]
     },
     {
-      id: 6,
+      id: 7,
       title: "Healthcare Dashboard",
       category: "Data Visualization",
       description: "Complex data visualization dashboard for healthcare professionals to monitor patient data, trends, and alerts in real-time. The system processes over 1M data points daily.",
@@ -98,7 +117,7 @@ export default function Projects() {
       results: ["50% reduction in data analysis time", "99.9% system uptime", "25% improvement in patient outcomes"]
     },
     {
-      id: 7,
+      id: 8,
       title: "AI-Powered SaaS Platform",
       category: "Complex UI Design",
       description: "User-friendly interface for a complex AI tool that makes machine learning accessible to non-technical users. The platform democratizes AI for small businesses.",
