@@ -1,15 +1,15 @@
 'use client'
 
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, type GroupProps } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
 import { useRef, useState, type ComponentProps } from 'react'
-import type { Points as ThreePoints } from 'three'
+import type { Group } from 'three'
 import * as random from 'maath/random/dist/maath-random.esm'
 
 type StarsProps = ComponentProps<typeof Points>
 
 function Stars(props: StarsProps) {
-  const ref = useRef<ThreePoints | null>(null)
+  const ref = useRef<Group | null>(null)
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
 
   useFrame((_state, delta) => {
@@ -20,8 +20,8 @@ function Stars(props: StarsProps) {
   })
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+    <group ref={ref as unknown as GroupProps['ref']} rotation={[0, 0, Math.PI / 4]}>
+      <Points positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
           color="#ffa0e0"
