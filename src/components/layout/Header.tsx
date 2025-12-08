@@ -31,7 +31,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-semibold tracking-tight text-white"
           >
-            Lohit's Portfolio
+            {`Lohit's Portfolio`}
           </motion.div>
         </Link>
 

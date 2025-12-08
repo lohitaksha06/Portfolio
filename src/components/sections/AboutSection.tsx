@@ -27,8 +27,7 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            I'm a passionate UX Engineer who bridges the gap between design and development. 
-            I create beautiful, functional, and user-centered digital experiences that solve real problems.
+            {`I'm a passionate UX Engineer who bridges the gap between design and development. I create beautiful, functional, and user-centered digital experiences that solve real problems.`}
           </p>
         </motion.div>
 
@@ -40,13 +39,10 @@ const AboutSection = () => {
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-6">My Approach</h3>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              I believe great UX comes from understanding users deeply and iterating based on real feedback. 
-              My process combines research, rapid prototyping, and continuous testing to create experiences 
-              that truly resonate with users.
+              {`I believe great UX comes from understanding users deeply and iterating based on real feedback. My process combines research, rapid prototyping, and continuous testing to create experiences that truly resonate with users.`}
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              When I'm not designing, you'll find me coding those designs into reality using modern 
-              technologies like React, TypeScript, and cutting-edge animation libraries.
+              {`When I'm not designing, you'll find me coding those designs into reality using modern technologies like React, TypeScript, and cutting-edge animation libraries.`}
             </p>
           </motion.div>
 

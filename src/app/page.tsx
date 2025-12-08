@@ -42,9 +42,9 @@ export default function Home() {
         <div className="text-center px-4">
           <h1
             className="glitch text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight relative"
-            data-text="Hi, I'm Lohitaksha"
+            data-text={`Hi, I'm Lohitaksha`}
           >
-            Hi, I'm Lohitaksha
+            {`Hi, I'm Lohitaksha`}
           </h1>
           <p className="mt-4 text-lg text-zinc-300">Welcome to my profile</p>
           
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">About Me</h2>
           <p className="text-gray-300 text-lg max-w-2xl">
-            I'm Lohitaksha, passionate about creating amazing digital experiences...
+            {`I'm Lohitaksha, passionate about creating amazing digital experiences...`}
           </p>
         </div>
       </section>

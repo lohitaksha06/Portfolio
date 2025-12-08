@@ -2,11 +2,14 @@
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
-import { useRef, useState } from 'react'
+import { useRef, useState, type ComponentProps } from 'react'
+import type { Points as ThreePoints } from 'three'
 import * as random from 'maath/random/dist/maath-random.esm'
 
-function Stars(props: any) {
-  const ref = useRef<any>()
+type StarsProps = ComponentProps<typeof Points>
+
+function Stars(props: StarsProps) {
+  const ref = useRef<ThreePoints | null>(null)
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
 
   useFrame((_state, delta) => {

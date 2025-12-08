@@ -59,8 +59,7 @@ const ProjectsSection = () => {
             Featured Projects
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
-            Here are some of my recent projects where I've applied user-centered design principles 
-            to solve complex problems and create exceptional digital experiences.
+            {`Here are some of my recent projects where I've applied user-centered design principles to solve complex problems and create exceptional digital experiences.`}
           </p>
         </motion.div>
 

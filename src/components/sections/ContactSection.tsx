@@ -17,11 +17,10 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-5xl md:text-7xl font-bold mb-6">
-            Let's Create Something Amazing Together
+            {`Let's Create Something Amazing Together`}
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            I'm always excited to work on new projects and collaborate with passionate people. 
-            Let's discuss how we can bring your ideas to life.
+            {`I'm always excited to work on new projects and collaborate with passionate people. Let's discuss how we can bring your ideas to life.`}
           </p>
         </motion.div>
 

@@ -18,18 +18,18 @@ export default function About() {
             <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-8">About Me</h1>
 
             <div className="prose prose-lg text-gray-700 mb-12">
-            <p className="text-xl leading-relaxed mb-6">
-              Hi there! I am Lohit and I'm a full-stack dev with a lot of interest and passion for other technologies like blockchain, cloud, APIs, data—blah blah, basically anything that lets me stretch the stack and ship something fun.
-            </p>
-            <p className="text-xl leading-relaxed mb-6">
-              Away from the keyboard, I'm a huge Formula 1 nerd (Forza Ferrari forever) and an even bigger Bayern Munich supporter—Harry Kane is my GOAT. Whether it's late-night race strategy breakdowns or Bundesliga weekends, you can count me in.
-            </p>
-            <p className="text-xl leading-relaxed mb-6">
-              When I need a reset, I sing, experiment on my piano, and dive into playlists. EDM and electro-pop keep me in flow—David Guetta, Halsey, The Chainsmokers, Ed Sheeran, and Mako are on repeat—but I'm game to explore every genre and mashup I can find.
-            </p>
-            <p className="text-xl leading-relaxed">
-              I'm building in public, collaborating with communities, and always open to new ideas. Feel free to follow along and reach out through any of my socials below.
-            </p>
+              <p className="text-xl leading-relaxed mb-6">
+                {`Hi there! I am Lohit and I'm a full-stack dev with a lot of interest and passion for other technologies like blockchain, cloud, APIs, data—blah blah, basically anything that lets me stretch the stack and ship something fun.`}
+              </p>
+              <p className="text-xl leading-relaxed mb-6">
+                {`Away from the keyboard, I'm a huge Formula 1 nerd (Forza Ferrari forever) and an even bigger Bayern Munich supporter—Harry Kane is my GOAT. Whether it's late-night race strategy breakdowns or Bundesliga weekends, you can count me in.`}
+              </p>
+              <p className="text-xl leading-relaxed mb-6">
+                {`When I need a reset, I sing, experiment on my piano, and dive into playlists. EDM and electro-pop keep me in flow—David Guetta, Halsey, The Chainsmokers, Ed Sheeran, and Mako are on repeat—but I'm game to explore every genre and mashup I can find.`}
+              </p>
+              <p className="text-xl leading-relaxed">
+                {`I'm building in public, collaborating with communities, and always open to new ideas. Feel free to follow along and reach out through any of my socials below.`}
+              </p>
           </div>
 
           <div className="grid gap-12 md:grid-cols-2">
@@ -39,7 +39,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-gray-50 rounded-2xl p-8 shadow-sm"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">What I'm Geeking Out On</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{`What I'm Geeking Out On`}</h2>
               <ul className="space-y-3 text-lg text-gray-700">
                 <li>• Conversational AI that lands real SQL answers for everyday teams</li>
                 <li>• Decentralized tooling, cross-chain data, and tokenized loyalty ideas</li>
@@ -54,7 +54,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-gray-50 rounded-2xl p-8 shadow-sm"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Let's Connect</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{`Let's Connect`}</h2>
               <ul className="space-y-4 text-lg text-gray-700">
                 <li>
                   <a
