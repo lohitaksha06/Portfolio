@@ -11,49 +11,39 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Meetriders – Smart College Carpool",
-      description: "Spring Boot + SQL ride-matching system that helped my college day scholars avoid evening bus queues by pairing commuters in real time.",
-      image: "/api/placeholder/600/400",
-      tags: ["Spring Boot", "SQL", "Ride Matching"],
-      color: "from-indigo-500 to-purple-600",
-      link: "https://meet-riders.vercel.app/"
+      title: 'Meetriders – Smart College Carpool',
+      description:
+        'Spring Boot + SQL ride-matching system that helped my college day scholars avoid evening bus queues by pairing commuters in real time.',
+      image: '/api/placeholder/600/400',
+      color: 'from-indigo-500 to-purple-600',
+      link: 'https://meet-riders.vercel.app/',
     },
     {
       id: 2,
-      title: "IntelliQuery – Natural Language SQL",
-      description: "Java backend with an LLM pipeline that turns plain-English questions into SQL and explains the answers for non-technical stakeholders.",
-      image: "/api/placeholder/600/400",
-      tags: ["Java", "LLM", "SQL"],
-      color: "from-blue-500 to-indigo-600",
-      link: "/projects"
+      title: 'IntelliQuery – Natural Language SQL',
+      description:
+        'Java backend with an LLM pipeline that turns plain-English questions into SQL and explains the answers for non-technical stakeholders.',
+      image: '/api/placeholder/600/400',
+      color: 'from-blue-500 to-indigo-600',
     },
     {
       id: 3,
-      title: "Digital Porch",
-      description: "Community-first web app that recreates neighborhood porch conversations with real-time posts and role-based moderation.",
-      image: "/api/placeholder/600/400",
-      tags: ["Community", "Realtime", "UI"],
-      color: "from-green-500 to-teal-600",
-      link: "https://digital-porch.vercel.app/"
+      title: 'Digital Porch',
+      description:
+        'Community-first web app that recreates neighborhood porch conversations with real-time posts and role-based moderation.',
+      image: '/api/placeholder/600/400',
+      color: 'from-green-500 to-teal-600',
+      link: 'https://digital-porch.vercel.app/',
     },
     {
       id: 4,
-      title: "Monza Motors",
-      description: "Motorsport-inspired dashboard centralizing vehicle specs, maintenance logs, and ownership documents for transparent car management.",
-      image: "/api/placeholder/600/400",
-      tags: ["Automotive", "Dashboard", "Notifications"],
-      color: "from-red-500 to-pink-600",
-      link: "https://monza-motors.netlify.app/"
+      title: 'Monza Motors',
+      description:
+        'Motorsport-inspired dashboard centralizing vehicle specs, maintenance logs, and ownership documents for transparent car management.',
+      image: '/api/placeholder/600/400',
+      color: 'from-red-500 to-pink-600',
+      link: 'https://monza-motors.netlify.app/',
     },
-    {
-      id: 5,
-      title: "E-Commerce Redesign",
-      description: "UX and conversion optimization overhaul that lifted checkout conversions by 40% and cut cart abandonment by 25%.",
-      image: "/api/placeholder/600/400",
-      tags: ["UX Research", "UI Design", "A/B Testing"],
-      color: "from-yellow-500 to-orange-600",
-      link: "/projects"
-    }
   ]
 
   return (
@@ -97,31 +87,20 @@ const ProjectsSection = () => {
               </motion.div>
 
               <div className="p-6">
-                <p className="text-gray-700 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-gray-700 mb-8 leading-relaxed">{project.description}</p>
 
-                <motion.a
-                  href={project.link}
-                  target={project.link.startsWith('http') ? '_blank' : '_self'}
-                  rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`block text-center bg-gradient-to-r ${project.color} text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg`}
-                >
-                  View Project
-                </motion.a>
+                {project.link && (
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`block text-center bg-gradient-to-r ${project.color} text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg`}
+                  >
+                    View Project
+                  </motion.a>
+                )}
               </div>
 
               {/* Hover overlay */}
