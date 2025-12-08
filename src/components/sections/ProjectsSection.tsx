@@ -98,7 +98,7 @@ const ProjectsSection = () => {
                     whileTap={{ scale: 0.95 }}
                     className={`block text-center bg-gradient-to-r ${project.color} text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg`}
                   >
-                    View Project
+                    View Project ↗
                   </motion.a>
                 )}
               </div>
@@ -119,13 +119,14 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
+            href="/projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            View All Projects
-          </motion.button>
+            View All Projects ↗
+          </motion.a>
         </motion.div>
       </div>
     </section>
