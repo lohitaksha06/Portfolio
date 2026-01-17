@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import Header from '@/components/layout/Header'
+import NeonGradientBackground from '@/components/animations/NeonGradientBackground'
 
 export default function Home() {
   const [showScrollText, setShowScrollText] = useState(false)
@@ -12,7 +14,7 @@ export default function Home() {
     // Show scroll text after a delay
     const scrollTextTimer = setTimeout(() => {
       setShowScrollText(true)
-    }, 2000)
+    }, 1000)
 
     // Observe blogs section
     const observer = new IntersectionObserver(
@@ -37,30 +39,47 @@ export default function Home() {
     <>
       <Header />
 
-      {/* Hero Section */}
-      <main id="home" className="relative grid min-h-screen place-items-center bg-black pt-32 text-white">
-        <div className="text-center px-4">
-          <h1
-            className="glitch text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight relative"
-            data-text={`Hi, I'm Lohitaksha`}
+      {/* Hero Section with Neon Theme */}
+      <main id="home" className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white overflow-hidden">
+        <NeonGradientBackground />
+        
+        <div className="relative z-10 text-center px-4">
+          <motion.h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide mb-4 text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            {`Hi, I'm Lohitaksha`}
-          </h1>
-          <p className="mt-4 text-lg text-zinc-300">Welcome to my profile</p>
+            Hi, I&apos;m Lohitaksha
+          </motion.h1>
+          
+          <motion.p
+            className="text-lg md:text-2xl lg:text-3xl font-light text-cyan-400 mb-12 tracking-wide"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Ideas to Impact: Engineering the Future
+          </motion.p>
           
           {/* Scroll to continue text */}
-          <div 
-            className={`mt-12 transition-opacity duration-1000 ${
+          <motion.div 
+            className={`mt-16 transition-opacity duration-1000 ${
               showScrollText ? 'opacity-100' : 'opacity-0'
             }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showScrollText ? 1 : 0 }}
           >
-            <p className="text-white text-sm animate-pulse">scroll to continue</p>
-            <div className="mt-2 w-px h-8 bg-white/50 mx-auto animate-bounce"></div>
-          </div>
+            <p className="text-cyan-400 text-sm tracking-widest uppercase">scroll to continue</p>
+            <div className="mt-3 w-px h-8 bg-gradient-to-b from-cyan-400 to-transparent mx-auto">
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-1 h-2 bg-cyan-400 mx-auto"
+              />
+            </div>
+          </motion.div>
         </div>
-        
-        {/* subtle scanline overlay */}
-        <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[length:100%_3px] opacity-[0.04]" />
       </main>
 
       {/* Content Sections */}
