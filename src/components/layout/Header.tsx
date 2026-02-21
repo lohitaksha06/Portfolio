@@ -36,7 +36,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           {navItems.map(item => (
             <Link
               key={item.name}
@@ -56,6 +56,45 @@ const Header = () => {
               )}
             </Link>
           ))}
+          
+          {/* Glowing Resume Download Button */}
+          <motion.a
+            href="/resume/Lohitaksha_Patary_CV.pdf"
+            download="Lohitaksha_Patary_CV.pdf"
+            className="relative ml-2 px-5 py-2 text-sm font-semibold text-white rounded-full overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+              boxShadow: '0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(139, 92, 246, 0.3)',
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 0 30px rgba(6, 182, 212, 0.7), 0 0 60px rgba(139, 92, 246, 0.5)',
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Resume
+            </span>
+            {/* Animated glow pulse */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(139, 92, 246, 0.4))',
+              }}
+              animate={{
+                opacity: [0.5, 1, 0.5],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          </motion.a>
         </nav>
 
         {/* Mobile menu button */}
@@ -99,6 +138,19 @@ const Header = () => {
               {item.name}
             </Link>
           ))}
+          
+          {/* Mobile Resume Download Button */}
+          <a
+            href="/resume/Lohitaksha_Patary_CV.pdf"
+            download="Lohitaksha_Patary_CV.pdf"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-base font-semibold text-cyan-400 hover:bg-cyan-500/10 transition-colors duration-200"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download Resume
+          </a>
         </nav>
       </motion.div>
     </motion.header>

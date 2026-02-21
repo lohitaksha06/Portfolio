@@ -2,23 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import a glitchy-styled display font */
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-/* Basic dark theme reset */
+/* Theme CSS Variables */
 :root {
   color-scheme: dark;
+  --theme-primary: rgb(6, 182, 212);
+  --theme-secondary: rgb(139, 92, 246);
+  --theme-accent: rgb(0, 229, 255);
+  --theme-glow: rgba(6, 182, 212, 0.5);
+  --theme-bg: rgb(15, 23, 42);
 }
 
-/* Glitch effect */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Enhanced Glitch effect */
 .glitch {
   position: relative;
-  font-family: 'Rubik Glitch', system-ui, sans-serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   text-shadow:
-    0 0 1px rgba(255,255,255,0.6),
-    0 0 2px rgba(255,255,255,0.4),
-    0 0 6px rgba(255,255,255,0.15);
-  animation: glitch-skew 2.5s infinite linear alternate-reverse;
+    0 0 10px var(--theme-glow),
+    0 0 20px var(--theme-glow),
+    0 0 40px var(--theme-glow);
+}
+
+/* Glitch animations for the GlitchText component */
+@keyframes glitch-skew {
+  0%, 100% { transform: skew(0deg); }
+  20% { transform: skew(2deg); }
+  40% { transform: skew(-3deg); }
+  60% { transform: skew(1.5deg); }
+  80% { transform: skew(-1deg); }
+}
+
+.animate-glitch-skew {
+  animation: glitch-skew 0.3s ease-in-out;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { 
+    transform: translate(-3px, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+  20% { 
+    transform: translate(3px, 0);
+    clip-path: polygon(0 10%, 100% 10%, 100% 45%, 0 45%);
+  }
+  40% { 
+    transform: translate(-2px, 0);
+    clip-path: polygon(0 20%, 100% 20%, 100% 55%, 0 55%);
+  }
+  60% { 
+    transform: translate(4px, 0);
+    clip-path: polygon(0 5%, 100% 5%, 100% 40%, 0 40%);
+  }
+  80% { 
+    transform: translate(-4px, 0);
+    clip-path: polygon(0 15%, 100% 15%, 100% 50%, 0 50%);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { 
+    transform: translate(3px, 0);
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+  20% { 
+    transform: translate(-3px, 0);
+    clip-path: polygon(0 55%, 100% 55%, 100% 90%, 0 90%);
+  }
+  40% { 
+    transform: translate(2px, 0);
+    clip-path: polygon(0 45%, 100% 45%, 100% 80%, 0 80%);
+  }
+  60% { 
+    transform: translate(-4px, 0);
+    clip-path: polygon(0 60%, 100% 60%, 100% 95%, 0 95%);
+  }
+  80% { 
+    transform: translate(4px, 0);
+    clip-path: polygon(0 50%, 100% 50%, 100% 85%, 0 85%);
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.3s ease-in-out infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 0.3s ease-in-out infinite;
 }
 
 .glitch::before,

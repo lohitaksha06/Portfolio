@@ -14,10 +14,10 @@
     "framer-motion": "^11.11.7",
     "maath": "^0.10.8",
     "next": "14.2.15",
-    "pdfjs-dist": "^5.4.530",
+    "pdfjs-dist": "4.8.69",
     "react": "^18",
     "react-dom": "^18",
-    "react-pdf": "^10.3.0",
+    "react-pdf": "^9.2.1",
     "three": "^0.181.2"
   },
   "devDependencies": {
