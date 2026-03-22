@@ -67,7 +67,7 @@ export default function CertificatesPage() {
               viewport={{ once: true, amount: 0.4, margin: '0px 0px -120px 0px' }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.05 }}
             >
-              <div className="relative w-full overflow-hidden rounded-lg border border-sky-900/40 bg-black/30 shadow-[0_0_25px_rgba(56,189,248,0.15)] md:w-[42%]">
+              <div className="relative w-full overflow-hidden rounded-lg border border-yellow-900/40 bg-black/30 shadow-[0_0_25px_rgba(56,189,248,0.15)] md:w-[42%]">
                 <Image
                   src={cert.imageSrc}
                   alt={cert.imageAlt}
@@ -80,12 +80,12 @@ export default function CertificatesPage() {
               </div>
 
               <div className="flex-1">
-                <h2 className="text-2xl font-semibold text-sky-200">{cert.title}</h2>
+                <h2 className="text-2xl font-semibold text-yellow-200">{cert.title}</h2>
                 <p className="mt-1 text-sm uppercase tracking-[0.35em] text-zinc-500">{cert.issuer}</p>
                 <p className="mt-4 text-sm leading-relaxed text-zinc-300 md:text-base">{cert.description}</p>
               </div>
               <div className="mt-6 flex w-full flex-col items-start gap-3 text-sm text-zinc-400 md:mt-0 md:w-auto">
-                <span className="rounded-full border border-sky-900/40 bg-slate-950/60 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-sky-200">
+                <span className="rounded-full border border-yellow-900/40 bg-zinc-950/60 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-yellow-200">
                   Issued {cert.issuedOn}
                 </span>
                 {cert.credentialUrl && (
@@ -93,7 +93,7 @@ export default function CertificatesPage() {
                     href={cert.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sky-300 transition-colors duration-300 hover:text-rose-300"
+                    className="inline-flex items-center gap-2 text-yellow-300 transition-colors duration-300 hover:text-yellow-300"
                   >
                     View credential ↗
                   </a>

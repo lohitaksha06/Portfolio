@@ -17,34 +17,34 @@ interface ThemeColors {
 
 const themes: Record<ThemeType, ThemeColors> = {
   blue: {
-    primary: 'rgb(6, 182, 212)',
-    secondary: 'rgb(139, 92, 246)',
-    accent: 'rgb(0, 229, 255)',
-    glow: 'rgba(6, 182, 212, 0.5)',
-    bg: 'rgb(15, 23, 42)',
-    gradientStart: 'rgba(6, 182, 212, 0.4)',
-    gradientMid: 'rgba(139, 92, 246, 0.3)',
-    gradientEnd: 'rgba(6, 182, 212, 0)',
+    primary: 'rgb(212, 175, 55)', // Gold
+    secondary: 'rgb(169, 169, 169)', // Grey
+    accent: 'rgb(255, 215, 0)', // Bright Gold
+    glow: 'rgba(212, 175, 55, 0.5)',
+    bg: 'rgb(10, 10, 10)',
+    gradientStart: 'rgba(212, 175, 55, 0.3)',
+    gradientMid: 'rgba(169, 169, 169, 0.2)',
+    gradientEnd: 'rgba(10, 10, 10, 0)',
   },
   red: {
-    primary: 'rgb(255, 0, 110)',
-    secondary: 'rgb(255, 85, 0)',
-    accent: 'rgb(255, 50, 150)',
-    glow: 'rgba(255, 0, 110, 0.5)',
-    bg: 'rgb(25, 15, 20)',
-    gradientStart: 'rgba(255, 0, 110, 0.4)',
-    gradientMid: 'rgba(255, 85, 0, 0.3)',
-    gradientEnd: 'rgba(255, 0, 110, 0)',
+    primary: 'rgb(184, 134, 11)', // Dark Goldenrod
+    secondary: 'rgb(128, 128, 128)', // Grey
+    accent: 'rgb(218, 165, 32)', // Goldenrod
+    glow: 'rgba(184, 134, 11, 0.5)',
+    bg: 'rgb(5, 5, 5)',
+    gradientStart: 'rgba(184, 134, 11, 0.3)',
+    gradientMid: 'rgba(128, 128, 128, 0.2)',
+    gradientEnd: 'rgba(5, 5, 5, 0)',
   },
   bw: {
-    primary: 'rgb(255, 255, 255)',
-    secondary: 'rgb(150, 150, 150)',
-    accent: 'rgb(200, 200, 200)',
-    glow: 'rgba(255, 255, 255, 0.4)',
-    bg: 'rgb(10, 10, 10)',
-    gradientStart: 'rgba(255, 255, 255, 0.2)',
-    gradientMid: 'rgba(150, 150, 150, 0.15)',
-    gradientEnd: 'rgba(255, 255, 255, 0)',
+    primary: 'rgb(255, 223, 0)', // Yellow Gold
+    secondary: 'rgb(192, 192, 192)', // Silver
+    accent: 'rgb(255, 250, 205)', // Lemon Chiffon
+    glow: 'rgba(255, 223, 0, 0.4)',
+    bg: 'rgb(15, 15, 15)',
+    gradientStart: 'rgba(255, 223, 0, 0.2)',
+    gradientMid: 'rgba(192, 192, 192, 0.15)',
+    gradientEnd: 'rgba(15, 15, 15, 0)',
   },
 }
 

@@ -4,10 +4,9 @@ import { motion } from 'framer-motion'
 import { useTheme, ThemeType } from '@/context/ThemeContext'
 
 const themeOptions: { key: ThemeType; label: string; colors: string[] }[] = [
-  { key: 'blue', label: 'Cyber Blue', colors: ['#06b6d4', '#8b5cf6'] },
-  { key: 'red', label: 'Neon Red', colors: ['#ff006e', '#ff5500'] },
-  { key: 'bw', label: 'Monochrome', colors: ['#ffffff', '#888888'] },
-]
+  { key: 'blue', label: 'Gold', colors: ['#d4af37', '#808080'] },
+  { key: 'red', label: 'Bronze', colors: ['#b8860b', '#808080'] },
+  { key: 'bw', label: 'Silver Gold', colors: ['#ffdf00', '#c0c0c0'] },
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()

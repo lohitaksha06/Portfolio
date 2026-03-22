@@ -149,7 +149,7 @@ export default function BlogsPage() {
               </div>
               <article className="flex flex-1 flex-col gap-4 px-6 py-6 md:px-8 md:py-7">
                 <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-                  <h2 className="text-2xl font-semibold leading-snug transition-colors duration-300 group-hover:text-sky-200">
+                  <h2 className="text-2xl font-semibold leading-snug transition-colors duration-300 group-hover:text-yellow-200">
                     {b.title}
                   </h2>
                   <time className="shrink-0 text-xs uppercase tracking-[0.3em] text-zinc-500">
@@ -157,7 +157,7 @@ export default function BlogsPage() {
                   </time>
                 </div>
                 <p className="text-sm leading-relaxed text-zinc-300 md:text-base">{b.excerpt}</p>
-                <span className="mt-auto inline-flex items-center text-sm font-medium text-sky-300 transition-colors duration-300 group-hover:text-rose-300">
+                <span className="mt-auto inline-flex items-center text-sm font-medium text-yellow-300 transition-colors duration-300 group-hover:text-yellow-300">
                   Read on LinkedIn →
                 </span>
               </article>
@@ -165,17 +165,17 @@ export default function BlogsPage() {
           ))}
         </div>
         <div className="mx-auto mt-20 flex max-w-5xl flex-col items-center gap-4 text-center">
-          <p className="text-lg font-semibold tracking-wide text-sky-100">
+          <p className="text-lg font-semibold tracking-wide text-yellow-100">
             Love reading my blogs? Check out more on my LinkedIn!
           </p>
           <a
             href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full border border-sky-500/60 bg-sky-500/10 px-6 py-3 text-base font-medium text-sky-200 shadow-[0_0_30px_rgba(56,189,248,0.35)] transition-all duration-300 hover:translate-y-[-2px] hover:border-sky-400 hover:text-white hover:shadow-[0_0_45px_rgba(56,189,248,0.55)]"
+            className="group inline-flex items-center gap-3 rounded-full border border-yellow-500/60 bg-yellow-500/10 px-6 py-3 text-base font-medium text-yellow-200 shadow-[0_0_30px_rgba(56,189,248,0.35)] transition-all duration-300 hover:tranzinc-y-[-2px] hover:border-yellow-400 hover:text-white hover:shadow-[0_0_45px_rgba(56,189,248,0.55)]"
           >
             Explore LinkedIn
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-sky-500/80 text-black shadow-[0_0_18px_rgba(59,130,246,0.8)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-400">
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-yellow-500/80 text-black shadow-[0_0_18px_rgba(59,130,246,0.8)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-yellow-400">
               →
             </span>
           </a>

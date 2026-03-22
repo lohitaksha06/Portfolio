@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Header from '@/components/layout/Header'
-import ElectricWavesBackground from '@/components/animations/ElectricWavesBackground'
+import GoldenPillarsBackground from '@/components/animations/GoldenPillarsBackground'
 import GlitchText from '@/components/ui/GlitchText'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher'
 import FadeOnScroll from '@/components/animations/FadeOnScroll'
@@ -34,18 +34,14 @@ export default function Home() {
   }, [])
 
   const bgClass = theme === 'blue' 
-    ? 'bg-slate-950' 
+    ? 'bg-[#0a0a0a]' 
     : theme === 'red' 
-    ? 'bg-[#190f14]' 
-    : 'bg-[#0a0a0a]'
-
+    ? 'bg-[#050505]'
+    : 'bg-[#0f0f0f]'
   return (
     <>
       <Header />
-      <ElectricWavesBackground />
-      <ThemeSwitcher />
-
-      {/* Hero Section */}
+        <GoldenPillarsBackground />
       <main id="home" className={`relative flex min-h-screen items-center justify-center ${bgClass} text-white overflow-hidden`}>
         <div className="relative z-10 text-center px-4">
           {/* Glitch Hero Text */}

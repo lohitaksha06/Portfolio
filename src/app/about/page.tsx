@@ -138,7 +138,7 @@ export default function About() {
                   <li className="flex items-center gap-4">
                     <span
                       aria-hidden="true"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white text-xl"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white text-xl"
                     >
                       💬
                     </span>
