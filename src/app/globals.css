@@ -8,11 +8,11 @@
 /* Theme CSS Variables */
 :root {
   color-scheme: dark;
-  --theme-primary: rgb(6, 182, 212);
-  --theme-secondary: rgb(139, 92, 246);
-  --theme-accent: rgb(0, 229, 255);
-  --theme-glow: rgba(6, 182, 212, 0.5);
-  --theme-bg: rgb(15, 23, 42);
+  --theme-primary: rgb(212, 175, 55);
+  --theme-secondary: rgb(169, 169, 169);
+  --theme-accent: rgb(255, 215, 0);
+  --theme-glow: rgba(212, 175, 55, 0.5);
+  --theme-bg: rgb(10, 10, 10);
 }
 
 body {

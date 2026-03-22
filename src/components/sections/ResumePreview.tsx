@@ -12,7 +12,7 @@ const ResumePreviewInner = dynamic<ResumePreviewProps>(
   {
   ssr: false,
   loading: () => (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-500 shadow-sm">
+    <div className="rounded-xl border border-gray-800 bg-[#151515] p-6 text-sm text-gray-400 shadow-sm">
       Loading resume preview…
     </div>
   ),

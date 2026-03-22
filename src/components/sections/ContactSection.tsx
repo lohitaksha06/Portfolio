@@ -9,7 +9,7 @@ const ContactSection = () => {
   const isInView = useInView(ref, { once: true })
 
   return (
-    <section ref={ref} className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white py-20 px-4">
+    <section ref={ref} className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -34,7 +34,7 @@ const ContactSection = () => {
             href="mailto:your.email@example.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Get In Touch
           </motion.a>
@@ -69,7 +69,7 @@ const ContactSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
               whileHover={{ scale: 1.2, y: -5 }}
-              className="text-4xl hover:text-pink-400 transition-colors duration-300"
+              className="text-4xl hover:text-yellow-400 transition-colors duration-300"
             >
               {social.icon}
             </motion.a>

@@ -47,7 +47,7 @@ const ProjectsSection = () => {
   ]
 
   return (
-    <section ref={ref} className="min-h-screen bg-gray-50 py-20 px-4">
+    <section ref={ref} className="min-h-screen bg-[#0a0a0a] py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -55,10 +55,10 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
             Featured Projects
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
             {`Here are some of my recent projects where I've applied user-centered design principles to solve complex problems and create exceptional digital experiences.`}
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="group relative overflow-hidden rounded-xl bg-[#151515] shadow-lg hover:shadow-2xl transition-all duration-500"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -86,7 +86,7 @@ const ProjectsSection = () => {
               </motion.div>
 
               <div className="p-6">
-                <p className="text-gray-700 mb-8 leading-relaxed">{project.description}</p>
+                <p className="text-gray-300 mb-8 leading-relaxed">{project.description}</p>
 
                 {project.link && (
                   <motion.a
@@ -122,7 +122,7 @@ const ProjectsSection = () => {
             href="/projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             View All Projects ↗
           </motion.a>

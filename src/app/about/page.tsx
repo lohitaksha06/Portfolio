@@ -10,7 +10,7 @@ export default function About() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white pt-36">
+      <main className="min-h-screen bg-[#0a0a0a] pt-36">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ export default function About() {
           className="container mx-auto px-4 py-20"
         >
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-8">About Me</h1>
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">About Me</h1>
 
             <div className="prose prose-lg text-gray-700 mb-12">
               <p className="text-xl leading-relaxed mb-6">
@@ -40,7 +40,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-200"
+                className="bg-[#151515] rounded-2xl p-8 shadow-sm border border-gray-800"
               >
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
                   <div>
@@ -48,8 +48,8 @@ export default function About() {
                       <span aria-hidden="true">📄</span>
                       <span>Resume</span>
                     </div>
-                    <h2 className="text-3xl font-bold text-gray-900 mt-3">My Resume</h2>
-                    <p className="text-gray-600 mt-2">
+                    <h2 className="text-3xl font-bold text-white mt-3">My Resume</h2>
+                    <p className="text-gray-300 mt-2">
                       View a preview below, or open/download the PDF.
                     </p>
                   </div>
@@ -59,7 +59,7 @@ export default function About() {
                       href={resumeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-200 hover:bg-gray-50"
+                      className="inline-flex items-center justify-center rounded-xl bg-[#0a0a0a] px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-gray-800 hover:bg-[#151515]"
                     >
                       Open PDF ↗
                     </a>
@@ -80,9 +80,9 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gray-50 rounded-2xl p-8 shadow-sm"
+                className="bg-[#151515] rounded-2xl p-8 shadow-sm"
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">{`Let's Connect`}</h2>
+                <h2 className="text-3xl font-bold text-white mb-6">{`Let's Connect`}</h2>
                 <ul className="space-y-5 text-lg text-gray-700">
                   <li className="flex items-center gap-4">
                     <span

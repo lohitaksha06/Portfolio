@@ -119,7 +119,7 @@ export default function Projects() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gray-50 pt-36">
+      <main className="min-h-screen bg-[#151515] pt-36">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,8 +128,8 @@ export default function Projects() {
         >
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">My Projects</h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">My Projects</h1>
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
                 {`A curated set of builds that show how I blend backend engineering, systems thinking, and clean interfaces to solve real problems for communities and teams I care about.`}
               </p>
             </div>
@@ -141,7 +141,7 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                  className="bg-[#111] rounded-2xl shadow-[0_0_15px_rgba(255,255,255,0.05)] overflow-hidden"
                 >
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div className="relative h-64 lg:h-full overflow-hidden">
@@ -165,10 +165,10 @@ export default function Projects() {
 
                     <div className="p-8">
                       <div className="mb-4">
-                        <span className="text-sm font-semibold text-indigo-600 uppercase tracking-widest">
+                        <span className="text-sm font-semibold text-yellow-400 uppercase tracking-widest">
                           {project.category}
                         </span>
-                        <h2 className="text-3xl font-bold text-gray-900 mt-2">{project.title}</h2>
+                        <h2 className="text-3xl font-bold text-white mt-2">{project.title}</h2>
                       </div>
 
                       <p className="text-gray-700 leading-relaxed">{project.description}</p>
@@ -177,7 +177,7 @@ export default function Projects() {
                         <button
                           type="button"
                           onClick={() => handleToggle(project.id)}
-                          className="inline-flex items-center gap-2 rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-600 transition-all hover:border-indigo-400 hover:text-indigo-700"
+                          className="inline-flex items-center gap-2 rounded-lg border border-yellow-800 bg-[#111] px-4 py-2 text-sm font-semibold text-yellow-400 transition-all hover:border-yellow-500 hover:text-yellow-300"
                           aria-expanded={expandedProject === project.id}
                           aria-controls={`project-details-${project.id}`}
                         >
@@ -191,7 +191,7 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="inline-block rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg"
+                            className="inline-block rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                           >
                             Visit Project ↗
                           </motion.a>
@@ -208,17 +208,17 @@ export default function Projects() {
                             transition={{ duration: 0.4 }}
                             className="overflow-hidden"
                           >
-                            <div className="mt-6 space-y-4 border-t border-gray-200 pt-6">
+                            <div className="mt-6 space-y-4 border-t border-gray-800 pt-6">
                               <div>
-                                <h4 className="font-semibold text-gray-900 mb-1">Challenge</h4>
+                                <h4 className="font-semibold text-white mb-1">Challenge</h4>
                                 <p className="text-gray-700 leading-relaxed">{project.challenge}</p>
                               </div>
                               <div>
-                                <h4 className="font-semibold text-gray-900 mb-1">Solution</h4>
+                                <h4 className="font-semibold text-white mb-1">Solution</h4>
                                 <p className="text-gray-700 leading-relaxed">{project.solution}</p>
                               </div>
                               <div>
-                                <h4 className="font-semibold text-gray-900 mb-1">Impact</h4>
+                                <h4 className="font-semibold text-white mb-1">Impact</h4>
                                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                                   {project.results.map((result, idx) => (
                                     <li key={idx}>{result}</li>
@@ -241,12 +241,12 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-center mt-20"
             >
-              <p className="text-lg text-gray-600 mb-4">Want to dive into more builds and experiments?</p>
+              <p className="text-lg text-gray-300 mb-4">Want to dive into more builds and experiments?</p>
               <a
                 href="https://github.com/lohitaksha06"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-indigo-500 font-semibold hover:text-indigo-700 transition-colors"
+                className="inline-flex items-center gap-2 text-indigo-500 font-semibold hover:text-yellow-300 transition-colors"
               >
                 Explore my GitHub ↗
               </a>

@@ -44,7 +44,7 @@ export default function ResumePreviewInner({
         ref={containerRef}
         className={
           className ??
-          'rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800'
+          'rounded-xl border border-red-800/50 bg-red-900/20 p-4 text-sm text-red-400'
         }
       >
         <p className="font-semibold">Resume preview unavailable.</p>
@@ -58,7 +58,7 @@ export default function ResumePreviewInner({
 
   return (
     <div ref={containerRef} className={className}>
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-xl border border-gray-800 bg-[#151515] shadow-sm">
         <Document
           file={fileUrl}
           loading={<div className="p-6 text-sm text-gray-500">Loading resume…</div>}
