@@ -28,6 +28,13 @@ export default function Home() {
   const [showScrollText, setShowScrollText] = useState(false)
   const { colors, theme } = useTheme()
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId)
+    if (!section) return
+
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => setShowScrollText(true), 2500)
     return () => clearTimeout(timer)
@@ -63,10 +70,11 @@ export default function Home() {
           
           {/* Scroll indicator */}
           <motion.div 
-            className="mt-16"
+            className="mt-16 cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: showScrollText ? 1 : 0 }}
             transition={{ duration: 1 }}
+            onClick={() => scrollToSection('latest-blog')}
           >
             <p 
               className="text-sm tracking-widest uppercase"
@@ -90,7 +98,7 @@ export default function Home() {
       </main>
 
       {/* Latest Blog Section */}
-      <section className={`relative min-h-screen flex items-center justify-center ${bgClass} text-white py-20`}>
+      <section id="latest-blog" className={`relative min-h-screen flex items-center justify-center ${bgClass} text-white py-20`}>
         <div className="container mx-auto px-4">
           <FadeOnScroll direction="up">
             <div className="text-center mb-16">
@@ -158,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Latest Project Section */}
-      <section className={`relative min-h-screen flex items-center justify-center ${bgClass} text-white py-20`}>
+      <section id="featured-project" className={`relative min-h-screen flex items-center justify-center ${bgClass} text-white py-20`}>
         <div className="container mx-auto px-4">
           <FadeOnScroll direction="up">
             <div className="text-center mb-16">
@@ -246,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className={`relative min-h-[60vh] flex items-center justify-center ${bgClass} text-white py-20`}>
+      <section id="contact-cta" className={`relative min-h-[60vh] flex items-center justify-center ${bgClass} text-white py-20`}>
         <div className="container mx-auto px-4 text-center">
           <FadeOnScroll direction="up">
             <h2 
@@ -266,8 +274,9 @@ export default function Home() {
           
           <FadeOnScroll direction="up" delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="/about"
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection('social-links')}
                 className="px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
                 style={{
                   backgroundColor: colors.primary,
@@ -278,9 +287,10 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 Get In Touch
-              </motion.a>
-              <motion.a
-                href="/projects"
+              </motion.button>
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection('featured-project')}
                 className="px-8 py-4 rounded-full font-semibold text-lg border-2 transition-all duration-300"
                 style={{
                   borderColor: colors.primary,
@@ -293,7 +303,46 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 View All Projects
-              </motion.a>
+              </motion.button>
+            </div>
+          </FadeOnScroll>
+
+          <FadeOnScroll direction="up" delay={0.45}>
+            <div id="social-links" className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              {[
+                {
+                  name: 'LinkedIn',
+                  href: 'https://www.linkedin.com/in/lohitaksha-patary-34638a321/',
+                },
+                {
+                  name: 'GitHub',
+                  href: 'https://github.com/lohitaksha06',
+                },
+                {
+                  name: 'Instagram',
+                  href: 'https://www.instagram.com/lohitaksha.06/',
+                },
+              ].map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-full border text-sm font-semibold tracking-wide transition-all duration-300"
+                  style={{
+                    borderColor: `${colors.primary}66`,
+                    color: colors.primary,
+                    backgroundColor: `${colors.primary}14`,
+                  }}
+                  whileHover={{
+                    scale: 1.06,
+                    backgroundColor: `${colors.primary}2a`,
+                  }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  {social.name} ↗
+                </motion.a>
+              ))}
             </div>
           </FadeOnScroll>
         </div>

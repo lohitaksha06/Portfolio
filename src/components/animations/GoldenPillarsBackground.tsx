@@ -123,7 +123,7 @@ export default function GoldenPillarsBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-10 bg-[#050505]"
+      className="absolute inset-0 w-full h-full -z-10 bg-[#050505] pointer-events-none"
     />
   );
 }
