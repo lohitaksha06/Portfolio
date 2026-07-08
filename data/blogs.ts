@@ -1,10 +1,4 @@
-'use client'
-
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import Header from '@/components/layout/Header'
-
-interface BlogSummary {
+export interface Blog {
   id: number
   title: string
   excerpt: string
@@ -14,7 +8,7 @@ interface BlogSummary {
   imageAlt: string
 }
 
-const blogs: BlogSummary[] = [
+const blogs: Blog[] = [
   {
     id: 4,
     title:
@@ -28,7 +22,7 @@ const blogs: BlogSummary[] = [
   },
   {
     id: 5,
-    title: 'From Smart Contracts to Smart Economies: Blockchain’s Role in Building Autonomous Systems',
+    title: 'From Smart Contracts to Smart Economies: Blockchain\u2019s Role in Building Autonomous Systems',
     excerpt:
       'Outlined how composable smart contracts can automate governance and value exchange, paving the way for self-running digital economies.',
     date: '2024-08-16',
@@ -48,7 +42,7 @@ const blogs: BlogSummary[] = [
   },
   {
     id: 7,
-    title: 'Project Update: Building PharmaChain – A Blockchain-Based Medicine Supply Chain Tracker',
+    title: 'Project Update: Building PharmaChain \u2013 A Blockchain-Based Medicine Supply Chain Tracker',
     excerpt:
       'Documented the latest sprint where PharmaChain gained lot tracking, cold-chain anomaly alerts, and a patient-facing verification portal.',
     date: '2024-05-22',
@@ -68,7 +62,7 @@ const blogs: BlogSummary[] = [
   },
   {
     id: 9,
-    title: 'Meta’s Use of Synthetic Data: Revolutionizing AI in the Metaverse',
+    title: 'Meta\u2019s Use of Synthetic Data: Revolutionizing AI in the Metaverse',
     excerpt:
       'Looked at how Meta trains immersive AI experiences with synthetic datasets, and why governance controls matter as virtual worlds mix real and generated content.',
     date: '2024-03-30',
@@ -98,7 +92,7 @@ const blogs: BlogSummary[] = [
   },
   {
     id: 2,
-    title: 'Building PharmaChain — A Blockchain-Based Pharmaceutical Supply Chain Solution',
+    title: 'Building PharmaChain \u2014 A Blockchain-Based Pharmaceutical Supply Chain Solution',
     excerpt:
       'Detailed the PharmaChain blueprint that uses smart contracts to trace medicines end-to-end, tighten recall windows, and secure provenance evidence.',
     date: '2024-07-03',
@@ -108,79 +102,4 @@ const blogs: BlogSummary[] = [
   },
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 48 },
-  visible: { opacity: 1, y: 0 },
-}
-
-export default function BlogsPage() {
-  return (
-    <>
-      <Header />
-      <main className="neon-fade min-h-screen bg-black text-white pt-36 pb-20 px-6">
-        <header className="max-w-5xl mx-auto mb-14">
-          <h1 className="text-5xl font-extrabold tracking-tight">Some Silly Blogs I Wrote</h1>
-          <p className="mt-4 max-w-2xl text-zinc-300">A tiny shelf for my experiments, rambles, and technology breakdowns.</p>
-        </header>
-        <div className="max-w-5xl mx-auto flex flex-col gap-10">
-          {blogs.map((b, index) => (
-            <motion.a
-              key={b.id}
-              href={b.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group glitch-card flex flex-col overflow-hidden md:flex-row"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35, margin: '0px 0px -120px 0px' }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.05 }}
-            >
-              <div className="relative h-52 w-full overflow-hidden md:h-auto md:w-[38%] md:min-h-[220px]">
-                <Image
-                  src={b.imageSrc}
-                  alt={b.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  priority={b.id === 1}
-                  unoptimized
-                />
-              </div>
-              <article className="flex flex-1 flex-col gap-4 px-6 py-6 md:px-8 md:py-7">
-                <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-                  <h2 className="text-2xl font-semibold leading-snug transition-colors duration-300 group-hover:text-yellow-200">
-                    {b.title}
-                  </h2>
-                  <time className="shrink-0 text-xs uppercase tracking-[0.3em] text-zinc-500">
-                    {b.date}
-                  </time>
-                </div>
-                <p className="text-sm leading-relaxed text-zinc-300 md:text-base">{b.excerpt}</p>
-                <span className="mt-auto inline-flex items-center text-sm font-medium text-yellow-300 transition-colors duration-300 group-hover:text-yellow-300">
-                  Read on LinkedIn →
-                </span>
-              </article>
-            </motion.a>
-          ))}
-        </div>
-        <div className="mx-auto mt-20 flex max-w-5xl flex-col items-center gap-4 text-center">
-          <p className="text-lg font-semibold tracking-wide text-yellow-100">
-            Love reading my blogs? Check out more on my LinkedIn!
-          </p>
-          <a
-            href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full border border-yellow-500/60 bg-yellow-500/10 px-6 py-3 text-base font-medium text-yellow-200 shadow-[0_0_30px_rgba(56,189,248,0.35)] transition-all duration-300 hover:tranzinc-y-[-2px] hover:border-yellow-400 hover:text-white hover:shadow-[0_0_45px_rgba(56,189,248,0.55)]"
-          >
-            Explore LinkedIn
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-yellow-500/80 text-black shadow-[0_0_18px_rgba(59,130,246,0.8)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-yellow-400">
-              →
-            </span>
-          </a>
-        </div>
-      </main>
-    </>
-  )
-}
+export default blogs
