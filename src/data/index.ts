@@ -7,7 +7,7 @@ export type { Certificate } from './certificates'
 export { default as projects } from './projects'
 export type { Project } from './projects'
 
-export { socialLinks, resumeUrl } from './social'
+export { socialLinks, resumeUrl, cvUrl } from './social'
 export type { SocialLink } from './social'
 
 export { about, latestBlog, latestProject } from './about'

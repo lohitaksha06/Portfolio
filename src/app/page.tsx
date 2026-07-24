@@ -56,7 +56,25 @@ export default function Home() {
           />
         </section>
 
-        <footer className="mt-24 border-t border-[rgba(0,212,255,0.1)] pt-8 text-center text-sm text-[#64748b]">
+        <section className="mt-24 text-center">
+          <h2 className="text-sm font-medium uppercase tracking-[0.3em] text-[#64748b]">Find me on</h2>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+            <a href="https://www.instagram.com/lohitaksha.06/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.5" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1.25" fill="currentColor"/></svg>
+              <span>lohitaksha.06</span>
+            </a>
+            <a href="https://discord.com/users/ronhere" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37A19.79 19.79 0 0016.23 3.1a13.91 13.91 0 00-.597 1.233 18.27 18.27 0 00-5.266 0A13.84 13.84 0 009.77 3.1a19.736 19.736 0 00-4.09 1.272C3.093 8.2 2.392 11.932 2.744 15.61a19.9 19.9 0 005.032 2.57c.408-.56.773-1.153 1.09-1.774a12.77 12.77 0 01-1.716-.826c.145-.105.286-.214.424-.326a14.15 14.15 0 0012.852 0c.14.112.28.221.424.326-.545.32-1.118.6-1.716.827.317.62.682 1.212 1.09 1.773a19.85 19.85 0 005.032-2.57c.414-4.264-.708-7.962-2.765-11.24zM9.52 13.35c-.999 0-1.82-.916-1.82-2.04s.804-2.04 1.82-2.04c1.023 0 1.838.924 1.82 2.04 0 1.124-.804 2.04-1.82 2.04zm4.96 0c-.999 0-1.82-.916-1.82-2.04s.804-2.04 1.82-2.04c1.023 0 1.838.924 1.82 2.04 0 1.124-.797 2.04-1.82 2.04z"/></svg>
+              <span>ronhere</span>
+            </a>
+            <a href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.983 3.5C4.983 4.881 3.88 6 2.5 6S0 4.881 0 3.5 1.12 1 2.5 1s2.483 1.119 2.483 2.5zM.5 8h4V23h-4V8zm7 0h3.833v2.047h.055C11.93 9.071 13.488 7.5 16.22 7.5 21.263 7.5 22 10.814 22 15.123V23h-4v-6.923c0-1.65-.03-3.77-2.296-3.77-2.3 0-2.652 1.796-2.652 3.653V23h-4V8z"/></svg>
+              <span>Lohitaksha Patary</span>
+            </a>
+          </div>
+        </section>
+
+        <footer className="mt-16 border-t border-[rgba(0,212,255,0.1)] pt-8 text-center text-sm text-[#64748b]">
           <p>Built with Next.js &middot; Lohitaksha Patary &copy; {new Date().getFullYear()}</p>
         </footer>
       </div>

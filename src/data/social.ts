@@ -27,4 +27,5 @@ export const socialLinks: SocialLink[] = [
   },
 ]
 
-export const resumeUrl = '/resume/Lohitaksha_Patary_CV.pdf'
+export const resumeUrl = '/resume/Lohitaksha_Patary_RESUME.pdf'
+export const cvUrl = '/cv/Lohitaksha_Patary_Full_CV.pdf'

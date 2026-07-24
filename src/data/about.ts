@@ -2,10 +2,9 @@ export const about = {
   name: 'Lohitaksha Patary',
   tagline: 'Ideas to Impact: Engineering the Future',
   bio: [
-    `Hi there! I am Lohit and I'm a full-stack dev with a lot of interest and passion for other technologies like blockchain, cloud, APIs, data—blah blah, basically anything that lets me stretch the stack and ship something fun.`,
-    `Away from the keyboard, I'm a huge Formula 1 nerd (Forza Ferrari forever) and an even bigger Bayern Munich supporter—Harry Kane is my GOAT. Whether it's late-night race strategy breakdowns or Bundesliga weekends, you can count me in.`,
-    `When I need a reset, I sing, experiment on my piano, and dive into playlists. EDM and electro-pop keep me in flow—David Guetta, Halsey, The Chainsmokers, Ed Sheeran, and Mako are on repeat—but I'm game to explore every genre and mashup I can find.`,
-    `I'm building in public, collaborating with communities, and always open to new ideas. Feel free to follow along and reach out through any of my socials below.`,
+    `I'm a Computer Science undergraduate at Amrita Vishwa Vidyapeetham, passionate about modern AI technologies — particularly interaction technology, computer vision, and natural language processing. My work spans building intelligent systems that bridge the gap between complex algorithms and real-world usability.`,
+    `Currently exploring research at the intersection of optimization algorithms and AI, I've worked on projects ranging from multi-objective genetic algorithms for urban routing to touchless gesture recognition systems. I'm also a published author on DZone and an active contributor to open-source projects.`,
+    `Beyond technology, I hold a Trinity College London Grade 5 certification in Piano and enjoy music composition. I believe in building technology that serves people — whether through accessible AI assistants, blockchain-based supply chain solutions, or smart campus systems.`,
   ],
 }
 
