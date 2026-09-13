@@ -210,7 +210,7 @@ const projects: Project[] = [
   },
   {
     id: 12,
-    title: 'AutoTrace \u2013 Blockchain Vehicle History',
+    title: 'AutoTrace – Blockchain Vehicle History',
     category: 'Blockchain + IPFS + TypeScript',
     description:
       'A decentralized vehicle maintenance and repair tracking system using blockchain and IPFS for tamper-proof service history.',
@@ -224,6 +224,42 @@ const projects: Project[] = [
       'Immutable service history stored on blockchain prevents record tampering',
       'Decentralized document storage via IPFS ensures data availability',
       'Complete vehicle provenance trail for pre-owned car verification',
+    ],
+  },
+  {
+    id: 13,
+    title: 'Audelle – AI-Powered Audio Editor',
+    category: 'FastAPI + Next.js + Expo + ML',
+    description:
+      'Intelligent audio editor where everything is possible by prompting — the AI understands instruments, structure, mood, and speaker intent, then executes edits from natural language.',
+    image: '/api/placeholder/800/600',
+    github: 'https://github.com/lohitaksha06/audio-trim',
+    challenge:
+      'Traditional audio editors force creators to scrub waveforms and drag handles for every trim, stem isolation, cleanup, or format cut, which is slow for podcasts, music, and short-form content.',
+    solution:
+      'Built an ML-backed pipeline (Demucs source separation, Whisper transcription, diarization, song-structure and mood analysis) behind a FastAPI job queue, with a Next.js web app for prompt-based editing plus a manual waveform editor, and an Expo mobile client sharing the same backend.',
+    results: [
+      'Natural-language edits: trim/arrange, stem isolate, inpainting, denoise, and podcast filler-word removal',
+      'Manual Editor fallback with waveform select, fades, gain, normalize, and speed control',
+      'Exports stems as ZIP plus FCPXML/EDL for Premiere, DaVinci, and Final Cut',
+    ],
+  },
+  {
+    id: 14,
+    title: 'Code Royale – Real-time Competitive Coding Game',
+    category: 'Next.js + Supabase + Judge0',
+    description:
+      'Real-time 1v1 competitive coding game — two players solve the same problem under time pressure and the first to pass all test cases wins the match.',
+    image: '/api/placeholder/800/600',
+    link: 'https://code-royale-gilt.vercel.app/auth/signup',
+    challenge:
+      'Competitive coding feels solitary — plain judges offer practice but no fast, social duel loop with progression that keeps players coming back.',
+    solution:
+      'Built a Next.js + Supabase arena with ranked/unranked 1v1 matchmaking, friend invites, bot battles, and a solo practice arena, judged server-side via Judge0 with ELO ratings, leaderboards, clubs, friends with live presence, and rich player profiles.',
+    results: [
+      'Live duels with ranked matchmaking, bot battles, and practice arena',
+      'Persistent progression: ELO, leaderboards, clubs, streaks, and badges',
+      'Auth via Supabase (email/password + GitHub OAuth) with realtime presence',
     ],
   },
 ]

@@ -32,6 +32,17 @@ const certificates: Certificate[] = [
     imageSrc: '/images/certificates/google-ui-for-websites.jpg',
     imageAlt: 'Google Coursera certificate for Build Dynamic User Interfaces (UI) for Websites.',
   },
+  {
+    id: 3,
+    title: 'IBM Generative AI Engineering Professional Certificate',
+    issuer: 'IBM / Coursera',
+    issuedOn: '2026-09-13',
+    description:
+      'Completed the 16-course IBM Generative AI Engineering Professional Certificate covering AI, generative AI, and NLP engineering — including tokenization, transformers, attention mechanisms, prompt engineering, GPT/BERT, PyTorch, Hugging Face Transformers, and RAG applications with LangChain such as question-answering systems.',
+    credentialUrl: 'https://coursera.org/verify/professional-cert/09D3CLZVBYB7',
+    imageSrc: '/images/certificates/ibm-generative-ai-engineering.jpg',
+    imageAlt: 'IBM Coursera Professional Certificate for Generative AI Engineering.',
+  },
 ]
 
 export default certificates
