@@ -2,12 +2,13 @@ import Image from 'next/image'
 import { about } from '@/data/about'
 import experience from '@/data/experience'
 import projects from '@/data/projects'
-import repos, { githubProfile } from '@/data/repos'
+import { githubProfile, githubAccounts } from '@/data/github'
 import publications from '@/data/publications'
 import certificates from '@/data/certificates'
 import blogs from '@/data/blogs'
 import achievements from '@/data/achievements'
 import SpotlightGrid from '@/components/SpotlightGrid'
+import ContributionsGraph from '@/components/ContributionsGraph'
 import SocialIcons from '@/components/SocialIcons'
 
 const statusBadge: Record<NonNullable<(typeof publications)[number]['status']>, string> = {
@@ -63,6 +64,10 @@ export default function Home() {
             >
               <SocialIcons.LinkedIn />
               <span>LinkedIn</span>
+            </a>
+            <a href="https://x.com/lohitaksha06" target="_blank" rel="noopener noreferrer">
+              <SocialIcons.X />
+              <span>X</span>
             </a>
             <a href={`mailto:${about.email}`}>
               <SocialIcons.Mail />
@@ -192,7 +197,7 @@ export default function Home() {
           <div className="stage-inner">
             <div className="section-head">
               <h2>GitHub</h2>
-              <span className="head-sub">Code, across three accounts.</span>
+              <span className="head-sub">A year of commits, across three accounts.</span>
             </div>
 
             <div className="gh-head">
@@ -210,53 +215,31 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="gh-handle">
-                  <a href="https://github.com/Einheit-Zenkai" target="_blank" rel="noopener noreferrer">
-                    @Einheit-Zenkai
-                  </a>{' '}
-                  &middot;{' '}
-                  <a href="https://github.com/coding-royale" target="_blank" rel="noopener noreferrer">
-                    @coding-royale
-                  </a>
+                  {githubAccounts.slice(1).map((a, i) => (
+                    <span key={a.login}>
+                      {i > 0 && (
+                        <>
+                          {' \u00b7 '}
+                        </>
+                      )}
+                      <a href={a.url} target="_blank" rel="noopener noreferrer">
+                        @{a.login}
+                      </a>
+                    </span>
+                  ))}
                 </div>
               </div>
               <div className="gh-stats">
                 <span className="gh-stat">
-                  <b>{repos.length}</b> featured
+                  <b>{githubProfile.totalRepos}</b> public repos
                 </span>
                 <span className="gh-stat">
-                  <b>{githubProfile.repoCount}</b> public repos
+                  <b>{githubProfile.totalFollowers}</b> followers
                 </span>
               </div>
             </div>
 
-            <SpotlightGrid>
-              {repos.map((r) => (
-                <div className="repo-tile" key={r.id}>
-                  <div className="repo-card project-card">
-                    <div>
-                      <span className="repo-owner">{r.owner}</span>
-                      <h3 className="repo-title">{r.name}</h3>
-                      <p>{r.description}</p>
-                      <p className="repo-tags">
-                        {r.language && <span className="repo-tag lang">{r.language}</span>}
-                      </p>
-                    </div>
-                    <p className="repo-links">
-                      <a href={r.url} target="_blank" rel="noopener noreferrer">
-                        <SocialIcons.GitHub />
-                        <span>Source</span>
-                      </a>
-                      {r.demo && (
-                        <a href={r.demo} target="_blank" rel="noopener noreferrer">
-                          <SocialIcons.External />
-                          <span>Live</span>
-                        </a>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </SpotlightGrid>
+            <ContributionsGraph />
           </div>
         </section>
 

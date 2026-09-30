@@ -22,7 +22,7 @@ export default function SpotlightGrid({
     if (!grid) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const cards = grid.querySelectorAll<HTMLElement>('.project-tile, .repo-tile')
+    const cards = grid.querySelectorAll<HTMLElement>('.project-tile')
     if (!cards.length) return
 
     function onMove(e: PointerEvent) {

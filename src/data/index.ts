@@ -13,8 +13,8 @@ export type { Experience } from './experience'
 export { default as publications } from './publications'
 export type { Publication } from './publications'
 
-export { default as repos, githubProfile } from './repos'
-export type { Repo } from './repos'
+export { githubProfile, githubAccounts } from './github'
+export type { GithubAccount } from './github'
 
 export { default as achievements } from './achievements'
 export type { Achievement } from './achievements'

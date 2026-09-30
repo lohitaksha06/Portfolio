@@ -34,6 +34,12 @@
     --purple: #8250df;
     --glow: rgba(47, 79, 208, 0.05);
     --glow-edge: rgba(47, 79, 208, 0.35);
+    /* Contribution levels, card ground up to full accent. */
+    --l0: #e2dfd7;
+    --l1: #c3ccf1;
+    --l2: #8c9fe8;
+    --l3: #5670dc;
+    --l4: #2f4fd0;
 
     --r-sm: 6px;
     --r: 10px;
@@ -81,6 +87,11 @@
         --purple: #a371f7;
         --glow: rgba(147, 168, 255, 0.07);
         --glow-edge: rgba(147, 168, 255, 0.45);
+        --l0: #232320;
+        --l1: #27305a;
+        --l2: #34479a;
+        --l3: #5b74dc;
+        --l4: #93a8ff;
 
         color-scheme: dark;
     }
@@ -111,6 +122,11 @@
     --purple: #a371f7;
     --glow: rgba(147, 168, 255, 0.07);
     --glow-edge: rgba(147, 168, 255, 0.45);
+    --l0: #232320;
+    --l1: #27305a;
+    --l2: #34479a;
+    --l3: #5b74dc;
+    --l4: #93a8ff;
 
     color-scheme: dark;
 }
@@ -679,8 +695,7 @@ section[id],
     }
 }
 
-.project-tile,
-.repo-tile {
+.project-tile {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -692,15 +707,12 @@ section[id],
     isolation: isolate;
     transition: background-color 200ms var(--ease-out);
 }
-.project-tile:hover,
-.repo-tile:hover {
+.project-tile:hover {
     background: var(--card-2);
 }
 
 .project-tile::before,
-.project-tile::after,
-.repo-tile::before,
-.repo-tile::after {
+.project-tile::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -710,8 +722,7 @@ section[id],
     transition: opacity 300ms var(--ease-out);
     z-index: -1;
 }
-.project-tile::before,
-.repo-tile::before {
+.project-tile::before {
     background: radial-gradient(
         260px circle at var(--x, 50%) var(--y, 50%),
         var(--glow),
@@ -719,8 +730,7 @@ section[id],
     );
 }
 /* The lit edge: the same light, tighter, painted on the 1px ring only. */
-.project-tile::after,
-.repo-tile::after {
+.project-tile::after {
     z-index: 2;
     padding: 1px;
     background: radial-gradient(
@@ -733,9 +743,7 @@ section[id],
     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
 }
 [data-lit] > .project-tile::before,
-[data-lit] > .project-tile::after,
-[data-lit] > .repo-tile::before,
-[data-lit] > .repo-tile::after {
+[data-lit] > .project-tile::after {
     opacity: 1;
 }
 
@@ -747,8 +755,7 @@ section[id],
     height: 100%;
 }
 
-.project-title,
-.repo-title {
+.project-title {
     font-family: var(--serif);
     font-size: 1.5rem;
     line-height: 1.15;
@@ -757,24 +764,21 @@ section[id],
     margin: 0 0 10px 0;
 }
 
-.project-card p,
-.repo-card p {
+.project-card p {
     color: var(--text-dim);
     font-size: 0.9375rem;
     line-height: 1.6;
     margin: 0 0 10px 0;
 }
 
-.project-tags,
-.repo-tags {
+.project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     margin: 14px 0 0 0 !important;
 }
 
-.project-tag,
-.repo-tag {
+.project-tag {
     display: inline-flex;
     align-items: center;
     border-radius: var(--pill);
@@ -785,21 +789,15 @@ section[id],
     box-shadow: inset 0 0 0 1px var(--hairline);
     color: var(--text-dim);
 }
-.repo-tag.lang {
-    font-family: var(--mono);
-    font-size: 0.6875rem;
-}
 
-.project-links,
-.repo-links {
+.project-links {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
     margin: auto 0 0 -10px !important;
     padding-top: 14px;
 }
-.project-links a,
-.repo-links a {
+.project-links a {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -813,17 +811,14 @@ section[id],
     transition: color 150ms ease-out, background-color 150ms ease-out,
         scale 150ms ease-out;
 }
-.project-links a:hover,
-.repo-links a:hover {
+.project-links a:hover {
     color: var(--text);
     background: var(--bg);
 }
-.project-links a:active,
-.repo-links a:active {
+.project-links a:active {
     scale: 0.96;
 }
-.project-links svg,
-.repo-links svg {
+.project-links svg {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
@@ -1142,6 +1137,10 @@ html.js .reveal.in {
 /* ==========================================================================
    GitHub
    ========================================================================== */
+.gh-panel {
+    padding: 0;
+}
+
 .gh-head {
     display: flex;
     align-items: center;
@@ -1190,12 +1189,75 @@ html.js .reveal.in {
     font-variant-numeric: tabular-nums;
 }
 
-.repo-owner {
-    font-family: var(--mono);
-    font-size: 0.6875rem;
-    color: var(--text-faint);
+/* Contribution heatmap. Five levels, drawn in the theme's accent so the
+   panel recolours with the rest of the page. */
+.gh-graph {
+    width: 100%;
+}
+.gh-cal {
     display: block;
-    margin-bottom: 6px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+.gh-month {
+    font-family: var(--sans);
+    font-size: 9px;
+    fill: var(--text-faint);
+}
+.gh-graph .l0 {
+    fill: var(--l0);
+}
+.gh-graph .l1 {
+    fill: var(--l1);
+}
+.gh-graph .l2 {
+    fill: var(--l2);
+}
+.gh-graph .l3 {
+    fill: var(--l3);
+}
+.gh-graph .l4 {
+    fill: var(--l4);
+}
+html.js .gh-cal rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    scale: 0.6;
+    transition: opacity 300ms var(--ease-out), scale 300ms var(--ease-out);
+    /* 53 columns x 8ms: the whole year lands in under half a second. */
+    transition-delay: calc(var(--c, 0) * 8ms);
+}
+html.js .gh-graph.shown .gh-cal rect {
+    opacity: 1;
+    scale: 1;
+}
+.gh-legend {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--text-faint);
+}
+.gh-legend span:not(:first-child):not(:last-child) {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+}
+.gh-graph-caption {
+    margin: 12px 0 0 0;
+    color: var(--text-faint);
+}
+.gh-graph-caption small {
+    color: var(--text-faint);
+}
+.gh-graph-caption b {
+    font-family: var(--mono);
+    color: var(--text);
 }
 
 /* ==========================================================================
@@ -1267,12 +1329,10 @@ html.js .reveal.in {
 }
 
 @media (max-width: 560px) {
-    .project-tile,
-    .repo-tile {
+    .project-tile {
         padding: 18px;
     }
-    .project-title,
-    .repo-title {
+    .project-title {
         font-size: 1.3rem;
     }
     .nav-cta span {
