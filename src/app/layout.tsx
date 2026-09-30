@@ -1,51 +1,97 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import FloatingParticles from '@/components/FloatingParticles'
+import Nav from '@/components/Nav'
+import Reveal, { HashScroll } from '@/components/Reveal'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+})
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
+
+const siteUrl = 'https://lohitaksha.dev'
 
 export const metadata: Metadata = {
-  title: "Lohitaksha Patary — Portfolio",
-  description: 'Building products and apps for the pleasure of helping people.',
+  metadataBase: new URL(siteUrl),
+  title: 'Lohitaksha Patary',
+  description:
+    'Computer Science undergraduate at Amrita Vishwa Vidyapeetham. Computer vision, RAG and accessibility AI, blockchain supply chains, and multi-objective optimisation research. Published on DZone.',
+  keywords: [
+    'Lohitaksha Patary',
+    'machine learning',
+    'computer vision',
+    'RAG',
+    'accessibility technology',
+    'blockchain',
+    'multi-objective genetic algorithm',
+    'optimization algorithms',
+    'Amrita Vishwa Vidyapeetham',
+  ],
+  authors: [{ name: 'Lohitaksha Patary' }],
+  creator: 'Lohitaksha Patary',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    siteName: 'Lohitaksha Patary',
+    title: 'Lohitaksha Patary — Computer Vision, RAG & Optimisation Research',
+    description:
+      'Computer Science undergraduate building accessible AI, blockchain supply chains, and multi-objective optimisation research. Published on DZone.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lohitaksha Patary',
+    description:
+      'Computer vision, RAG and accessibility AI, blockchain supply chains, and multi-objective optimisation research.',
+  },
+  robots: { index: true, follow: true },
+}
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8f7f3' },
+    { media: '(prefers-color-scheme: dark)', color: '#131312' },
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <FloatingParticles />
-
-        <nav className="fixed top-6 left-6 z-50 flex items-center gap-6">
-          <a href="/" className="text-sm font-medium text-[#64748b] transition-colors hover:text-[#00d4ff]">Home</a>
-          <a href="/blogs" className="text-sm font-medium text-[#64748b] transition-colors hover:text-[#00d4ff]">Blogs</a>
-          <a href="/certificates" className="text-sm font-medium text-[#64748b] transition-colors hover:text-[#00d4ff]">Certificates</a>
-          <a href="/projects" className="text-sm font-medium text-[#64748b] transition-colors hover:text-[#00d4ff]">Projects</a>
-        </nav>
-
-        <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
-          <a
-            href="/resume/Lohitaksha_Patary_RESUME.pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,212,255,0.3)] bg-[rgba(0,212,255,0.08)] px-5 py-2.5 text-sm font-medium text-[#00d4ff] transition-all duration-300 hover:border-[#00d4ff] hover:bg-[rgba(0,212,255,0.15)] hover:shadow-[0_0_30px_rgba(0,212,255,0.4),0_0_60px_rgba(0,212,255,0.2)] hover:scale-105"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Resume
-          </a>
-          <a
-            href="/cv/Lohitaksha_Patary_Full_CV.pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,212,255,0.3)] bg-[rgba(0,212,255,0.08)] px-5 py-2.5 text-sm font-medium text-[#00d4ff] transition-all duration-300 hover:border-[#00d4ff] hover:bg-[rgba(0,212,255,0.15)] hover:shadow-[0_0_30px_rgba(0,212,255,0.4),0_0_60px_rgba(0,212,255,0.2)] hover:scale-105"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            CV
-          </a>
-        </div>
+    <html
+      lang="en"
+      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Marks scripting as available, so the scroll-reveal rules only
+            hide content when JS can bring it back. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("js");`,
+          }}
+        />
+        {/* Applies the remembered theme before first paint, so an explicit
+            choice never flashes the other one. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body>
+        <Nav />
         {children}
+        <Reveal />
+        <HashScroll />
       </body>
     </html>
   )

@@ -1,83 +1,424 @@
-import Link from 'next/link'
+import Image from 'next/image'
 import { about } from '@/data/about'
+import experience from '@/data/experience'
+import projects from '@/data/projects'
+import repos, { githubProfile } from '@/data/repos'
+import publications from '@/data/publications'
+import certificates from '@/data/certificates'
+import blogs from '@/data/blogs'
+import achievements from '@/data/achievements'
+import SpotlightGrid from '@/components/SpotlightGrid'
+import SocialIcons from '@/components/SocialIcons'
 
-function NavCard({ href, label, description }: { href: string; label: string; description: string }) {
-  return (
-    <Link
-      href={href}
-      className="group neon-border relative flex items-center justify-between rounded-2xl bg-[rgba(15,23,42,0.6)] px-8 py-6 transition-all duration-300 hover:scale-[1.02] hover:bg-[rgba(15,23,42,0.9)]"
-    >
-      <div>
-        <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-[#00d4ff]">
-          {label}
-        </h3>
-        <p className="mt-1 text-sm text-[#94a3b8]">{description}</p>
-      </div>
-      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,212,255,0.3)] text-[#00d4ff] transition-all duration-300 group-hover:border-[#00d4ff] group-hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]">
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </span>
-    </Link>
-  )
+const statusBadge: Record<NonNullable<(typeof publications)[number]['status']>, string> = {
+  published: 'published',
+  'in-review': 'in review',
+  'in-prep': 'in preparation',
+}
+
+const monthYear = (iso: string) => {
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return iso
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
 }
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
-      <div className="mx-auto max-w-4xl px-6 pt-32 pb-24">
-        <section>
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-[#00d4ff]">Hello, I&apos;m</p>
-          <h1 className="mt-3 font-display text-5xl font-bold leading-tight text-white md:text-7xl">
-            Lohitaksha Patary
-          </h1>
-          <div className="mt-8 space-y-5 text-lg leading-relaxed text-[#cbd5e1] md:text-xl">
-            {about.bio.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+    <>
+      <header className="hero" id="about">
+        <div className="stage-inner">
+          <span className="hero-roles">
+            Computer Vision &amp; RAG
+            <span className="sep">&middot;</span>
+            <span>Blockchain &amp; Optimisation</span>
+          </span>
+          <h1>{about.name}</h1>
+          <p className="stage-lead">
+            I&rsquo;m a Computer Science undergraduate at Amrita Vishwa Vidyapeetham, building{' '}
+            <em className="hl">accessible AI</em> and multi-objective optimisation systems &mdash;
+            surround-view computer vision, RAG kiosks that adapt to how a user reads, and genetic
+            algorithms that solve urban problems with four competing objectives at once.
+          </p>
+          <p className="links">
+            <a className="primary" href="/resume/Lohitaksha_Patary_RESUME.pdf" download>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 2 0 01.707.293l5.414 5.414a1 2 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Resume</span>
+            </a>
+            <a href="/cv/Lohitaksha_Patary_Full_CV.pdf" download>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 2 0 01.707.293l5.414 5.414a1 2 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Full CV</span>
+            </a>
+            <a href="https://github.com/lohitaksha06" target="_blank" rel="noopener noreferrer">
+              <SocialIcons.GitHub />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SocialIcons.LinkedIn />
+              <span>LinkedIn</span>
+            </a>
+            <a href={`mailto:${about.email}`}>
+              <SocialIcons.Mail />
+              <span>Email</span>
+            </a>
+          </p>
+          <p className="hero-contact">
+            <small>
+              {about.location} &middot; B.Tech CSE, 2024&ndash;2028, CGPA 7.86 &middot; Reach me at{' '}
+              <a href={`mailto:${about.email}`}>{about.email}</a>
+            </small>
+          </p>
+        </div>
+      </header>
+
+      <main>
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="experience">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>Experience</h2>
+              <span className="head-sub">Where I&rsquo;ve worked.</span>
+            </div>
+
+            {experience.map((job) => (
+              <div className="entry" key={job.id}>
+                <div className="entry-head-row">
+                  <span className="entry-head">
+                    {job.role}
+                    <span className="meta">
+                      {job.org} &middot; {job.when}
+                    </span>
+                  </span>
+                  {job.links?.map((l) => (
+                    <span className="entry-links" key={l.href}>
+                      [
+                      <a href={l.href} target="_blank" rel="noopener noreferrer">
+                        {l.label}
+                      </a>
+                      ]
+                    </span>
+                  ))}
+                </div>
+                {job.sub && <p className="entry-sub">{job.sub}</p>}
+                <details className="entry-details">
+                  <summary>Technical details</summary>
+                  <ul>
+                    {job.bullets.map((b, i) => (
+                      <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                    ))}
+                  </ul>
+                </details>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-20 space-y-4">
-          <NavCard
-            href="/blogs"
-            label="Find Out My Blogs"
-            description="Thoughts on blockchain, AI, cloud, and everything in between."
-          />
-          <NavCard
-            href="/certificates"
-            label="My Certificates"
-            description="Credentials from Google, Coursera, and more."
-          />
-          <NavCard
-            href="/projects"
-            label="Research & Projects"
-            description="Real-world builds — from campus canteens to LLM-powered query engines."
-          />
-        </section>
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="projects">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>Projects</h2>
+              <span className="head-sub">Things I&rsquo;ve built.</span>
+            </div>
 
-        <section className="mt-24 text-center">
-          <h2 className="text-sm font-medium uppercase tracking-[0.3em] text-[#64748b]">Find me on</h2>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
-            <a href="https://www.instagram.com/lohitaksha.06/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.5" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1.25" fill="currentColor"/></svg>
-              <span>lohitaksha.06</span>
-            </a>
-            <a href="https://discord.com/users/ronhere" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37A19.79 19.79 0 0016.23 3.1a13.91 13.91 0 00-.597 1.233 18.27 18.27 0 00-5.266 0A13.84 13.84 0 009.77 3.1a19.736 19.736 0 00-4.09 1.272C3.093 8.2 2.392 11.932 2.744 15.61a19.9 19.9 0 005.032 2.57c.408-.56.773-1.153 1.09-1.774a12.77 12.77 0 01-1.716-.826c.145-.105.286-.214.424-.326a14.15 14.15 0 0012.852 0c.14.112.28.221.424.326-.545.32-1.118.6-1.716.827.317.62.682 1.212 1.09 1.773a19.85 19.85 0 005.032-2.57c.414-4.264-.708-7.962-2.765-11.24zM9.52 13.35c-.999 0-1.82-.916-1.82-2.04s.804-2.04 1.82-2.04c1.023 0 1.838.924 1.82 2.04 0 1.124-.804 2.04-1.82 2.04zm4.96 0c-.999 0-1.82-.916-1.82-2.04s.804-2.04 1.82-2.04c1.023 0 1.838.924 1.82 2.04 0 1.124-.797 2.04-1.82 2.04z"/></svg>
-              <span>ronhere</span>
-            </a>
-            <a href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#00d4ff]">
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.983 3.5C4.983 4.881 3.88 6 2.5 6S0 4.881 0 3.5 1.12 1 2.5 1s2.483 1.119 2.483 2.5zM.5 8h4V23h-4V8zm7 0h3.833v2.047h.055C11.93 9.071 13.488 7.5 16.22 7.5 21.263 7.5 22 10.814 22 15.123V23h-4v-6.923c0-1.65-.03-3.77-2.296-3.77-2.3 0-2.652 1.796-2.652 3.653V23h-4V8z"/></svg>
-              <span>Lohitaksha Patary</span>
-            </a>
+            <SpotlightGrid>
+              {projects.map((p) => (
+                <div className="project-tile" key={p.id}>
+                  <div className="project-card">
+                    <div>
+                      <h3 className="project-title">{p.title}</h3>
+                      {p.when && <p className="meta">{p.when}</p>}
+                      <p>{p.description}</p>
+                      <p className="project-tags">
+                        <span className="project-tag">{p.kind}</span>
+                        {p.tags.map((t) => (
+                          <span className="project-tag" key={t}>
+                            {t}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+                    <details className="entry-details">
+                      <summary>Challenge &amp; approach</summary>
+                      <ul>
+                        <li>
+                          <b>Challenge &mdash; </b>
+                          {p.challenge}
+                        </li>
+                        <li>
+                          <b>Approach &mdash; </b>
+                          {p.solution}
+                        </li>
+                        <li>
+                          <b>Outcome &mdash; </b>
+                          <ul>
+                            {p.results.map((r, i) => (
+                              <li key={i}>{r}</li>
+                            ))}
+                          </ul>
+                        </li>
+                      </ul>
+                    </details>
+                    <p className="project-links">
+                      {p.github && (
+                        <a href={p.github} target="_blank" rel="noopener noreferrer">
+                          <SocialIcons.GitHub />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                      {p.link && (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer">
+                          <SocialIcons.External />
+                          <span>Live</span>
+                        </a>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </SpotlightGrid>
           </div>
         </section>
 
-        <footer className="mt-16 border-t border-[rgba(0,212,255,0.1)] pt-8 text-center text-sm text-[#64748b]">
-          <p>Built with Next.js &middot; Lohitaksha Patary &copy; {new Date().getFullYear()}</p>
-        </footer>
-      </div>
-    </main>
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="opensource">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>GitHub</h2>
+              <span className="head-sub">Code, across three accounts.</span>
+            </div>
+
+            <div className="gh-head">
+              <Image
+                className="gh-avatar"
+                src={githubProfile.avatar}
+                alt=""
+                width={52}
+                height={52}
+              />
+              <div>
+                <div className="gh-handle">
+                  <a href={githubProfile.url} target="_blank" rel="noopener noreferrer">
+                    @{githubProfile.login}
+                  </a>
+                </div>
+                <div className="gh-handle">
+                  <a href="https://github.com/Einheit-Zenkai" target="_blank" rel="noopener noreferrer">
+                    @Einheit-Zenkai
+                  </a>{' '}
+                  &middot;{' '}
+                  <a href="https://github.com/coding-royale" target="_blank" rel="noopener noreferrer">
+                    @coding-royale
+                  </a>
+                </div>
+              </div>
+              <div className="gh-stats">
+                <span className="gh-stat">
+                  <b>{repos.length}</b> featured
+                </span>
+                <span className="gh-stat">
+                  <b>{githubProfile.repoCount}</b> public repos
+                </span>
+              </div>
+            </div>
+
+            <SpotlightGrid>
+              {repos.map((r) => (
+                <div className="repo-tile" key={r.id}>
+                  <div className="repo-card project-card">
+                    <div>
+                      <span className="repo-owner">{r.owner}</span>
+                      <h3 className="repo-title">{r.name}</h3>
+                      <p>{r.description}</p>
+                      <p className="repo-tags">
+                        {r.language && <span className="repo-tag lang">{r.language}</span>}
+                      </p>
+                    </div>
+                    <p className="repo-links">
+                      <a href={r.url} target="_blank" rel="noopener noreferrer">
+                        <SocialIcons.GitHub />
+                        <span>Source</span>
+                      </a>
+                      {r.demo && (
+                        <a href={r.demo} target="_blank" rel="noopener noreferrer">
+                          <SocialIcons.External />
+                          <span>Live</span>
+                        </a>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </SpotlightGrid>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="publications">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>Research</h2>
+              <span className="head-sub">Published, and in preparation.</span>
+            </div>
+
+            {publications.map((pub) => (
+              <div className="paper" key={pub.id}>
+                <span className="paper-title">
+                  {pub.title}
+                  {pub.status && <span className="paper-badge">{statusBadge[pub.status]}</span>}
+                </span>
+                <span className="paper-authors">{pub.authors}</span>
+                <span className="paper-venue">
+                  {pub.venue}
+                  {pub.links?.map((l) => (
+                    <span key={l.href}>
+                      {' \u00b7 '}
+                      <a href={l.href} target="_blank" rel="noopener noreferrer">
+                        {l.label}
+                      </a>
+                    </span>
+                  ))}
+                </span>
+                <p className="paper-abstract">{pub.abstract}</p>
+                <details className="entry-details">
+                  <summary>Read the abstract notes</summary>
+                  <ul>
+                    <li>
+                      Written in Typst (IEEE format) with source code and preprints openly hosted on
+                      GitHub.
+                    </li>
+                    <li>
+                      Addresses UN Sustainable Development Goal 11 (Sustainable Cities &amp;
+                      Communities) and Goal 9 (Industry, Innovation &amp; Infrastructure).
+                    </li>
+                  </ul>
+                </details>
+              </div>
+            ))}
+
+            <div className="section-head" style={{ marginTop: 56 }}>
+              <h2>Achievements</h2>
+              <span className="head-sub">Things that went well.</span>
+            </div>
+
+            {achievements.map((a) => (
+              <div className="ach" key={a.id}>
+                <span className="ach-mark">{a.when}</span>
+                <div className="ach-body">
+                  <div className="ach-title">{a.title}</div>
+                  <div className="ach-sub">{a.detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="certificates">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>Certificates</h2>
+              <span className="head-sub">Credentials and skill badges.</span>
+            </div>
+
+            {certificates.map((c) => (
+              <div className="cert" key={c.id}>
+                <div className="cert-head">
+                  <div>
+                    <h3 className="cert-title">{c.title}</h3>
+                    <p className="cert-issuer">{c.issuer}</p>
+                  </div>
+                  <span className="cert-when">
+                    {c.issued}
+                    {c.expired && <span className="cert-note">expired {c.expired}</span>}
+                  </span>
+                </div>
+                {c.note && <p className="cert-issuer" style={{ marginTop: 6 }}>{c.note}</p>}
+                {c.credentialUrl && (
+                  <p className="cert-issuer" style={{ marginTop: 4 }}>
+                    <a href={c.credentialUrl} target="_blank" rel="noopener noreferrer">
+                      Verify credential
+                      {c.credentialId && (
+                        <span className="meta"> &middot; ID {c.credentialId}</span>
+                      )}
+                    </a>
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="blogs">
+          <div className="stage-inner">
+            <div className="section-head">
+              <h2>Blogs</h2>
+              <span className="head-sub">Things I&rsquo;ve written.</span>
+            </div>
+
+            {[...blogs]
+              .sort((a, b) => (a.date < b.date ? 1 : -1))
+              .map((b) => (
+                <a className="blog-card" key={b.id} href={b.href} target="_blank" rel="noopener noreferrer">
+                  <span className="blog-card-title">{b.title}</span>
+                  <span className="blog-card-desc">{b.excerpt}</span>
+                  <span className="meta">{monthYear(b.date)}</span>
+                </a>
+              ))}
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="stage-inner">
+          <div className="footer-row">
+            <div className="footer-links">
+              <a href="https://github.com/lohitaksha06" target="_blank" rel="noopener noreferrer">
+                <SocialIcons.GitHub />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/lohitaksha-patary-34638a321/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SocialIcons.LinkedIn />
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://www.instagram.com/lohitaksha.06/" target="_blank" rel="noopener noreferrer">
+                <SocialIcons.Instagram />
+                <span>Instagram</span>
+              </a>
+              <a href={`mailto:${about.email}`}>
+                <SocialIcons.Mail />
+                <span>Email</span>
+              </a>
+              <a href="/resume/Lohitaksha_Patary_RESUME.pdf" download>
+                <SocialIcons.Download />
+                <span>Resume</span>
+              </a>
+              <a href="/cv/Lohitaksha_Patary_Full_CV.pdf" download>
+                <SocialIcons.Download />
+                <span>Full CV</span>
+              </a>
+            </div>
+          </div>
+          <p className="footer-meta">
+            <small>
+              {about.name} &middot; {about.location} &middot; Built with Next.js &amp; Tailwind
+              &middot; &copy; {new Date().getFullYear()}
+            </small>
+          </p>
+        </div>
+      </footer>
+    </>
   )
 }

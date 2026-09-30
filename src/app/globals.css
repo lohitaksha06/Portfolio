@@ -2,68 +2,1291 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* ==========================================================================
+   Design tokens.
 
+   Editorial and quiet: a warm paper ground, serif display type over a
+   clean sans, mono for dates and labels, and a single cobalt accent.
+   ========================================================================== */
 :root {
-  --neon-blue: #00d4ff;
-  --neon-glow: rgba(0, 212, 255, 0.4);
-  --dark-bg: #0a0e17;
-  --card-bg: rgba(15, 23, 42, 0.8);
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
+    --bg: #f8f7f3;
+    --card: #f0eee8;
+    --card-2: #e8e5dd;
+    --chip-bg: #efede7;
+    --field-bg: #fcfbf8;
+    --text: #1c1b18;
+    --text-dim: #57544d;
+    --text-faint: #6a665e;
+    --hairline: #e2dfd7;
+    --btn-border: #d3cfc5;
+    --btn-hover: #f0eee8;
+    --accent: #2f4fd0;
+    --link: #2f4fd0;
+    --cta: #1c1b18;
+    --cta-fg: #f8f7f3;
+    --shadow: none;
+    --shadow-raised: 0 1px 2px rgba(28, 27, 24, 0.06), 0 4px 12px -4px rgba(28, 27, 24, 0.1);
+    --focus-ring: rgba(47, 79, 208, 0.5);
+    --tip-bg: #1c1b18;
+    --tip-fg: #f8f7f3;
+    --green: #1a7f37;
+    --red: #cf222e;
+    --purple: #8250df;
+    --glow: rgba(47, 79, 208, 0.05);
+    --glow-edge: rgba(47, 79, 208, 0.35);
+
+    --r-sm: 6px;
+    --r: 10px;
+    --r-lg: 12px;
+    --r-tile: 12px;
+    --pill: 8px;
+    --wrap: 1040px;
+    --rail: 200px;
+    --gutter: 32px;
+    --section: 88px;
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+    --sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif: var(--font-instrument-serif), "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #131312;
+        --card: #1b1b19;
+        --card-2: #232320;
+        --chip-bg: #20201e;
+        --field-bg: #161615;
+        --text: #ecebe6;
+        --text-dim: #aaa79f;
+        --text-faint: #86827a;
+        --hairline: #2b2b28;
+        --btn-border: #3b3b37;
+        --btn-hover: #1b1b19;
+        --accent: #93a8ff;
+        --link: #93a8ff;
+        --cta: #ecebe6;
+        --cta-fg: #131312;
+        --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px -4px rgba(0, 0, 0, 0.6);
+        --focus-ring: rgba(147, 168, 255, 0.55);
+        --tip-bg: #ecebe6;
+        --tip-fg: #131312;
+        --green: #3fb950;
+        --red: #f85149;
+        --purple: #a371f7;
+        --glow: rgba(147, 168, 255, 0.07);
+        --glow-edge: rgba(147, 168, 255, 0.45);
+
+        color-scheme: dark;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #131312;
+    --card: #1b1b19;
+    --card-2: #232320;
+    --chip-bg: #20201e;
+    --field-bg: #161615;
+    --text: #ecebe6;
+    --text-dim: #aaa79f;
+    --text-faint: #86827a;
+    --hairline: #2b2b28;
+    --btn-border: #3b3b37;
+    --btn-hover: #1b1b19;
+    --accent: #93a8ff;
+    --link: #93a8ff;
+    --cta: #ecebe6;
+    --cta-fg: #131312;
+    --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px -4px rgba(0, 0, 0, 0.6);
+    --focus-ring: rgba(147, 168, 255, 0.55);
+    --tip-bg: #ecebe6;
+    --tip-fg: #131312;
+    --green: #3fb950;
+    --red: #f85149;
+    --purple: #a371f7;
+    --glow: rgba(147, 168, 255, 0.07);
+    --glow-edge: rgba(147, 168, 255, 0.45);
+
+    color-scheme: dark;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--dark-bg);
-  color: var(--text-primary);
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: -0.011em;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
-.font-display {
-  font-family: 'Playfair Display', serif;
+a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 150ms ease-out, color 150ms ease-out;
+}
+a:visited {
+    color: var(--text);
+}
+a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
 }
 
-.neon-text {
-  color: var(--neon-blue);
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+p {
+    margin: 0 0 14px 0;
 }
 
-.neon-border {
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1), inset 0 0 15px rgba(0, 212, 255, 0.05);
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    color: var(--text);
 }
 
-.neon-border:hover {
-  border-color: rgba(0, 212, 255, 0.7);
-  box-shadow: 0 0 25px rgba(0, 212, 255, 0.25), inset 0 0 25px rgba(0, 212, 255, 0.1);
+h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.75rem, 6.4vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px 0;
 }
 
-.particle {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  background: var(--neon-blue);
-  animation: float-particle linear infinite;
-  opacity: 0.15;
+h2 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin: 0;
 }
 
-@keyframes float-particle {
-  0% {
-    transform: translateY(100vh) scale(0);
+h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    margin: 0 0 6px 0;
+}
+
+ul {
+    margin: 12px 0 0 0;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: var(--text-dim);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+li::marker {
+    color: var(--text-faint);
+}
+
+li b,
+li strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+small {
+    color: var(--text-dim);
+    font-size: 0.8125rem;
+}
+
+.meta {
+    color: var(--text-faint);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 32px 0;
+}
+
+::selection {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+    animation: focus-ring 240ms var(--ease-out);
+}
+@keyframes focus-ring {
+    from {
+        outline-color: transparent;
+        outline-offset: 6px;
+    }
+}
+
+/* ==========================================================================
+   Nav
+
+   Sticky with a blurred ground, so page content passes underneath it
+   instead of colliding with it. Section anchors get scroll-margin to
+   match the bar's height, so a jump never parks a heading under it.
+   ========================================================================== */
+.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid var(--hairline);
+}
+
+.topnav-inner {
+    position: relative;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 var(--gutter);
+    min-height: 64px;
+}
+
+/* The section links are the only part that scrolls. They live in their own
+   box so the Resume and CV buttons stay pinned in view on a narrow
+   screen instead of scrolling off with the links. */
+.topnav-links {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    /* Links carry their own padding, so their text lines up with the page
+       edge. */
+    padding: 0 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.topnav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.topnav a {
+    position: relative;
+    z-index: 1;
+    color: var(--text-dim);
+    /* Larger than the reference's 0.8125rem, with roomier padding, so the
+       section links read as real targets rather than footnotes. */
+    font-size: 0.9375rem;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 9px 12px;
+    border-radius: var(--pill);
+    text-decoration: none;
+    transition: color 150ms ease-out;
+}
+.topnav a:hover,
+.topnav a.active {
+    color: var(--text);
+}
+
+/* The hover pill: it fades in under the first link the pointer reaches,
+   then glides between links while the pointer stays in the bar. */
+.nav-pill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 36px;
+    width: 0;
+    margin-top: -18px;
+    border-radius: var(--pill);
+    background: var(--card);
     opacity: 0;
-  }
-  10% {
-    opacity: 0.15;
-  }
-  90% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1);
+    pointer-events: none;
+    transition: opacity 150ms var(--ease-out);
+}
+.nav-pill.glide {
+    transition: opacity 150ms var(--ease-out), transform 180ms var(--ease-out),
+        width 180ms var(--ease-out);
+}
+.nav-pill.on {
+    opacity: 1;
+}
+
+.nav-spacer {
+    display: none;
+}
+
+/* Resume / CV. The one solid pair of buttons on the site. */
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--pill);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: var(--text-dim);
+    background: none;
+    box-shadow: inset 0 0 0 1px var(--btn-border);
+    transition: color 150ms ease-out, background-color 150ms ease-out, scale 150ms ease-out;
+}
+.nav-cta:hover {
+    color: var(--text);
+    background: var(--btn-hover);
+    text-decoration: none;
+}
+.nav-cta:active {
+    scale: 0.96;
+}
+.nav-cta svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.nav-cta.solid {
+    background: var(--cta);
+    color: var(--cta-fg);
+    box-shadow: var(--shadow-raised);
+}
+.nav-cta.solid:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.nav-theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-left: 2px;
+    border: none;
+    border-radius: var(--pill);
+    background: none;
+    box-shadow: inset 0 0 0 1px var(--btn-border);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+}
+.nav-theme:hover {
+    color: var(--text);
+    background: var(--btn-hover);
+}
+.nav-theme svg {
+    width: 17px;
+    height: 17px;
+}
+/* Which mark shows depends on the theme in force: the moon offers light,
+   the sun offers dark. The default here is light; the two rules below
+   cover an explicit choice and, failing that, the OS preference. */
+.nav-theme .icon-sun {
+    display: none;
+}
+.nav-theme .icon-moon {
+    display: block;
+}
+:root[data-theme="dark"] .nav-theme .icon-sun {
+    display: block;
+}
+:root[data-theme="dark"] .nav-theme .icon-moon {
+    display: none;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .nav-theme .icon-sun {
+        display: block;
+    }
+    :root:not([data-theme]) .nav-theme .icon-moon {
+        display: none;
+    }
+}
+
+h1,
+h2,
+section[id],
+.section {
+    scroll-margin-top: 84px;
+}
+
+/* ==========================================================================
+   Stages
+   ========================================================================== */
+.stage {
+    position: relative;
+    padding: 0 0 var(--section);
+    scroll-margin-top: 64px;
+}
+
+.stage-inner {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.section-head,
+.tile-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 28px;
+}
+.section-head h2,
+.tile-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.head-sub,
+.tile-sub {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--text-faint);
+    margin: 0;
+}
+.section .section-head,
+.section .tile-head {
+    counter-increment: section;
+}
+.section .section-head::before,
+.section .tile-head::before {
+    content: counter(section, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+@media (min-width: 861px) {
+    .section > .stage-inner {
+        display: grid;
+        grid-template-columns: var(--rail) minmax(0, 1fr);
+        column-gap: 56px;
+        align-items: start;
+    }
+    .section > .stage-inner > * {
+        grid-column: 2;
+    }
+    .section > .stage-inner > .section-head {
+        grid-column: 1;
+        grid-row: 1 / span 20;
+        position: sticky;
+        top: 88px;
+        margin-bottom: 0;
+    }
+}
+
+.stage-lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    max-width: 62ch;
+    margin: 0 0 14px 0;
+}
+.stage-lead:last-of-type {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+    padding: 112px 0 56px;
+}
+
+.hero-roles {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 20px 0;
+}
+.hero-roles .sep {
+    padding: 0 8px;
+    color: var(--accent);
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+}
+
+.hero p {
+    color: var(--text-dim);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 14px 0;
+}
+
+/* One phrase set in the serif italic, the way a magazine leans on a word. */
+.hl {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--text);
+}
+
+.hero .stage-inner > * {
+    animation: blur-in 560ms var(--ease-out) both;
+}
+.hero .stage-inner > :nth-child(2) {
+    animation-delay: 60ms;
+}
+.hero .stage-inner > :nth-child(3) {
+    animation-delay: 120ms;
+}
+.hero .stage-inner > :nth-child(4) {
+    animation-delay: 180ms;
+}
+.hero .stage-inner > :nth-child(5) {
+    animation-delay: 240ms;
+}
+@keyframes blur-in {
+    from {
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(6px);
+    }
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    align-items: center;
+    margin: 32px 0 0 0 !important;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-dim);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 150ms ease-out, background-color 150ms ease-out,
+        scale 150ms ease-out;
+}
+.links a:hover {
+    color: var(--accent);
+}
+.links svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.links a.primary {
+    height: 42px;
+    padding: 0 20px;
+    border-radius: var(--pill);
+    background: var(--cta);
+    color: var(--cta-fg);
+    box-shadow: var(--shadow-raised);
+}
+.links a.primary:hover {
+    background: var(--accent);
+    color: #fff;
+}
+.links a.primary:active {
+    scale: 0.96;
+}
+
+.hero-contact {
+    margin-top: 24px !important;
+}
+.hero-contact small {
+    color: var(--text-faint);
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Tiles and project cards
+
+   A grey surface with a hairline ring. While the mouse is over the grid,
+   every card is lit from the cursor, so a card still glows at the edge
+   nearest a cursor that is over its neighbour.
+   ========================================================================== */
+.tile-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+}
+@media (min-width: 700px) {
+    .tile-grid.auto {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.project-tile,
+.repo-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border-radius: var(--r-tile);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    padding: 22px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background-color 200ms var(--ease-out);
+}
+.project-tile:hover,
+.repo-tile:hover {
+    background: var(--card-2);
+}
+
+.project-tile::before,
+.project-tile::after,
+.repo-tile::before,
+.repo-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
     opacity: 0;
-  }
+    transition: opacity 300ms var(--ease-out);
+    z-index: -1;
+}
+.project-tile::before,
+.repo-tile::before {
+    background: radial-gradient(
+        260px circle at var(--x, 50%) var(--y, 50%),
+        var(--glow),
+        transparent 70%
+    );
+}
+/* The lit edge: the same light, tighter, painted on the 1px ring only. */
+.project-tile::after,
+.repo-tile::after {
+    z-index: 2;
+    padding: 1px;
+    background: radial-gradient(
+        180px circle at var(--x, 50%) var(--y, 50%),
+        var(--glow-edge),
+        transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+[data-lit] > .project-tile::before,
+[data-lit] > .project-tile::after,
+[data-lit] > .repo-tile::before,
+[data-lit] > .repo-tile::after {
+    opacity: 1;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 0;
+    height: 100%;
+}
+
+.project-title,
+.repo-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+}
+
+.project-card p,
+.repo-card p {
+    color: var(--text-dim);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.project-tags,
+.repo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 14px 0 0 0 !important;
+}
+
+.project-tag,
+.repo-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--pill);
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--bg);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    color: var(--text-dim);
+}
+.repo-tag.lang {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+}
+
+.project-links,
+.repo-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: auto 0 0 -10px !important;
+    padding-top: 14px;
+}
+.project-links a,
+.repo-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: var(--pill);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 150ms ease-out, background-color 150ms ease-out,
+        scale 150ms ease-out;
+}
+.project-links a:hover,
+.repo-links a:hover {
+    color: var(--text);
+    background: var(--bg);
+}
+.project-links a:active,
+.repo-links a:active {
+    scale: 0.96;
+}
+.project-links svg,
+.repo-links svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* Collapsed detail. Native <details>, so it works without scripting and
+   the content stays in the page for search and for Cmd-F. */
+.entry-details {
+    margin: 10px 0 0;
+    interpolate-size: allow-keywords;
+}
+.entry-details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    filter: blur(4px);
+    transition: block-size 280ms var(--ease-out), opacity 220ms var(--ease-out),
+        filter 220ms var(--ease-out), content-visibility 280ms allow-discrete;
+}
+.entry-details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+    filter: none;
+}
+
+.entry-details > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    cursor: pointer;
+    list-style: none;
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    margin-left: -10px;
+    border-radius: var(--pill);
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+    user-select: none;
+}
+.entry-details > summary::-webkit-details-marker {
+    display: none;
+}
+.entry-details > summary:hover {
+    color: var(--text);
+    background: var(--card);
+}
+.entry-details > summary::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg) translate(-1px, -1px);
+    transition: transform 200ms var(--ease-out);
+}
+.entry-details[open] > summary::after {
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+.entry-details ul {
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+.section {
+    margin: 0;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+}
+
+/* Scroll reveal. Newly revealed content blurs in rather than popping. Only
+   hidden when scripting is available, so a failed observer can never leave
+   the page blank. */
+html.js .reveal {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(8px);
+    transition: opacity 500ms var(--ease-out), filter 500ms var(--ease-out),
+        transform 500ms var(--ease-out);
+}
+html.js .reveal.in {
+    opacity: 1;
+    filter: none;
+    transform: none;
+}
+
+/* ==========================================================================
+   Experience
+   ========================================================================== */
+.entry {
+    padding: 18px 0;
+    border-top: 1px solid var(--hairline);
+}
+.section-head + .entry {
+    border-top: none;
+    padding-top: 0;
+}
+
+.entry-meta {
+    min-width: 0;
+}
+
+.entry-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 14px;
+    flex-wrap: wrap;
+}
+
+.entry-head {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+}
+
+.entry-head .meta {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: var(--text-faint);
+    margin-top: 2px;
+}
+
+.entry-sub {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    margin: 2px 0 0 0;
+}
+
+.entry ul {
+    margin-top: 12px;
+}
+
+/* ==========================================================================
+   Writing
+   ========================================================================== */
+.blog-card {
+    display: block;
+    padding: 12px 10px;
+    margin: 0 -10px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 150ms ease-out;
+}
+.blog-card:hover {
+    background: var(--card);
+}
+.blog-card-title {
+    display: block;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+.blog-card-desc {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+.blog-card .meta {
+    font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   Research
+   ========================================================================== */
+.paper {
+    padding: 14px 0;
+    margin: 0;
+    border-top: 1px solid var(--hairline);
+}
+.tile-head + .paper {
+    border-top: none;
+    padding-top: 0;
+}
+.paper-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+    margin-bottom: 4px;
+    color: var(--text);
+}
+.paper-authors {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.875rem;
+}
+.paper-authors b {
+    color: var(--text);
+}
+.paper-venue {
+    display: block;
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    margin-top: 2px;
+}
+.paper-venue a {
+    color: var(--text-dim);
+}
+.paper-badge {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    border-radius: var(--pill);
+    padding: 1px 8px;
+    margin-left: 8px;
+    vertical-align: 2px;
+}
+.paper-abstract {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 8px 0 0 0;
+}
+
+/* ==========================================================================
+   Certificates
+   ========================================================================== */
+.cert {
+    padding: 16px 0;
+    border-top: 1px solid var(--hairline);
+}
+.cert:first-of-type {
+    border-top: none;
+}
+.cert-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 14px;
+    flex-wrap: wrap;
+}
+.cert-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.cert-issuer {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    margin: 2px 0 0 0;
+}
+.cert-when {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.cert-note {
+    display: block;
+    color: var(--text-faint);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Achievements
+   ========================================================================== */
+.ach {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 11px 0;
+    border-top: 1px solid var(--hairline);
+}
+.ach:first-of-type {
+    border-top: none;
+}
+.ach-mark {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 66px;
+}
+.ach-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.ach-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+}
+.ach-sub {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   GitHub
+   ========================================================================== */
+.gh-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.gh-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--chip-bg);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.gh-handle {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    color: var(--text-dim);
+}
+.gh-handle a {
+    color: var(--text);
+}
+
+.gh-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+}
+.gh-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    border-radius: var(--pill);
+    padding: 5px 12px;
+    font-size: 0.8125rem;
+    color: var(--text-dim);
+}
+.gh-stat b {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.repo-owner {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    color: var(--text-faint);
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    border-top: 1px solid var(--hairline);
+    padding: 40px 0 56px;
+    margin-top: 0;
+}
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+}
+.footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 150ms ease-out;
+}
+.footer-links a:hover {
+    color: var(--accent);
+}
+.footer-links svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+.footer-meta {
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+@media (max-width: 860px) {
+    :root {
+        --gutter: 20px;
+        --section: 60px;
+    }
+    .hero {
+        padding: 64px 0 40px;
+    }
+    h1 {
+        font-size: clamp(2.25rem, 11vw, 3rem);
+    }
+    .section-head h2,
+    .tile-title {
+        font-size: 1.6rem;
+    }
+    .hero .stage-inner > * {
+        animation: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .project-tile,
+    .repo-tile {
+        padding: 18px;
+    }
+    .project-title,
+    .repo-title {
+        font-size: 1.3rem;
+    }
+    .nav-cta span {
+        display: none;
+    }
+    .nav-cta {
+        width: 40px;
+        padding: 0;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    html.js .reveal {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+    .hero .stage-inner > * {
+        animation: none;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
 }
