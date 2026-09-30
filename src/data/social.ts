@@ -16,6 +16,11 @@ export const socialLinks: SocialLink[] = [
     handle: '@lohitaksha06',
   },
   {
+    name: 'X',
+    url: 'https://x.com/lohitaksha06',
+    handle: '@lohitaksha06',
+  },
+  {
     name: 'Instagram',
     url: 'https://www.instagram.com/lohitaksha.06/',
     handle: '@lohitaksha.06',

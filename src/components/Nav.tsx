@@ -9,6 +9,7 @@ const SECTIONS = [
   { id: 'projects', label: 'Projects' },
   { id: 'opensource', label: 'GitHub' },
   { id: 'publications', label: 'Research' },
+  { id: 'achievements', label: 'Achievements' },
   { id: 'certificates', label: 'Certificates' },
   { id: 'blogs', label: 'Blogs' },
 ]

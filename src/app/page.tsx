@@ -303,7 +303,13 @@ export default function Home() {
               </div>
             ))}
 
-            <div className="section-head" style={{ marginTop: 56 }}>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------- */}
+        <section className="stage section reveal" id="achievements">
+          <div className="stage-inner">
+            <div className="section-head">
               <h2>Achievements</h2>
               <span className="head-sub">Things that went well.</span>
             </div>
@@ -392,6 +398,10 @@ export default function Home() {
               >
                 <SocialIcons.LinkedIn />
                 <span>LinkedIn</span>
+              </a>
+              <a href="https://x.com/lohitaksha06" target="_blank" rel="noopener noreferrer">
+                <SocialIcons.X />
+                <span>X</span>
               </a>
               <a href="https://www.instagram.com/lohitaksha.06/" target="_blank" rel="noopener noreferrer">
                 <SocialIcons.Instagram />

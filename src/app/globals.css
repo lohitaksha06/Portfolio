@@ -499,6 +499,20 @@ section[id],
     margin-bottom: 6px;
 }
 
+/* The first item under a section head carries no rule of its own: the
+   hairline there would only cut across from the head to nothing. These
+   are siblings rather than :first-of-type, because the head is itself a
+   div and would win that pseudo-class. */
+.section-head + .entry,
+.section-head + .paper,
+.section-head + .cert,
+.section-head + .ach,
+.section-head + .blog-card {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
 @media (min-width: 861px) {
     .section > .stage-inner {
         display: grid;

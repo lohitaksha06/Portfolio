@@ -34,6 +34,17 @@ export function LinkedIn() {
   )
 }
 
+export function X() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12.6 1h2.45l-5.35 6.1L16 15h-4.93l-3.86-5.04L2.79 15H.34l5.72-6.53L0 1h5.05l3.49 4.61L12.6 1Zm-.86 12.55L4.32 2.38H2.87l8.87 11.17Z"
+      />
+    </svg>
+  )
+}
+
 export function Instagram() {
   return (
     <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -74,6 +85,6 @@ export function Download() {
   )
 }
 
-const SocialIcons = { GitHub, LinkedIn, Instagram, Mail, External, Download }
+const SocialIcons = { GitHub, LinkedIn, X, Instagram, Mail, External, Download }
 
 export default SocialIcons
